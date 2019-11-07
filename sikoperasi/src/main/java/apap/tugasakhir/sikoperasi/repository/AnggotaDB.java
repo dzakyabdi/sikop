@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AnggotaDB extends JpaRepository<AnggotaModel, Long> {
+    AnggotaModel findByNia(String nia);
 }
