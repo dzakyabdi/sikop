@@ -8,7 +8,7 @@
 
 ---
 
-**KONTRAK KERJA 1**
+**Kontrak Tahap 1 Tugas Akhir**
 
 NPM  | NAMA LENGKAP | FITUR YANG DISELESAIKAN
 ------------- | ------------- | -------------
@@ -19,7 +19,7 @@ NPM  | NAMA LENGKAP | FITUR YANG DISELESAIKAN
 
 ---
 
-**KONTRAK KERJA 2**
+**Kontrak Tahap 2 Tugas Akhir**
 
 NPM  | NAMA LENGKAP | FITUR YANG DISELESAIKAN
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ NPM  | NAMA LENGKAP | FITUR YANG DISELESAIKAN
 
 ---
 
-**KONTRAK KERJA 3**
+**Kontrak Tahap 3 Tugas Akhir**
 
 NPM  | NAMA LENGKAP | FITUR YANG DISELESAIKAN
 ------------- | ------------- | -------------
