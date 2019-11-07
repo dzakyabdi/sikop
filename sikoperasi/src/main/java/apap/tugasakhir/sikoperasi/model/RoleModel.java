@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Table(name = "role")
 public class RoleModel implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
