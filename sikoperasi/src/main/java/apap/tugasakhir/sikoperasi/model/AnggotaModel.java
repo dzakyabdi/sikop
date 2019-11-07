@@ -3,8 +3,11 @@ package apap.tugasakhir.sikoperasi.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="anggota")
@@ -48,6 +51,9 @@ public class AnggotaModel implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "uuid_user", referencedColumnName = "uuid")
     private UserModel user;
+    
+    @OneToMany(mappedBy = "anggota", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<PinjamanModel> listPinjaman;
 
     public UserModel getUser() {
         return user;
@@ -128,4 +134,13 @@ public class AnggotaModel implements Serializable {
     public void setIs_pengurus(boolean is_pengurus) {
         this.is_pengurus = is_pengurus;
     }
+
+	public List<PinjamanModel> getListPinjaman() {
+		return listPinjaman;
+	}
+
+	public void setListPinjaman(List<PinjamanModel> listPinjaman) {
+		this.listPinjaman = listPinjaman;
+	}
+    
 }
