@@ -55,6 +55,12 @@ public class AnggotaModel implements Serializable {
     @OneToMany(mappedBy = "anggota", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<PinjamanModel> listPinjaman;
 
+    @OneToMany(mappedBy = "id_anggota_penyetor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<SimpananModel> listSimpananPenyetor;
+
+    @OneToMany(mappedBy = "id_anggota_penerima", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<SimpananModel> listSimpananPenerima;
+
     public UserModel getUser() {
         return user;
     }
@@ -142,5 +148,20 @@ public class AnggotaModel implements Serializable {
 	public void setListPinjaman(List<PinjamanModel> listPinjaman) {
 		this.listPinjaman = listPinjaman;
 	}
-    
+
+    public List<SimpananModel> getListSimpananPenyetor() {
+        return listSimpananPenyetor;
+    }
+
+    public void setListSimpananPenyetor(List<SimpananModel> listSimpananPenyetor) {
+        this.listSimpananPenyetor = listSimpananPenyetor;
+    }
+
+    public List<SimpananModel> getListSimpananPenerima() {
+        return listSimpananPenerima;
+    }
+
+    public void setListSimpananPenerima(List<SimpananModel> listSimpananPenerima) {
+        this.listSimpananPenerima = listSimpananPenerima;
+    }
 }
