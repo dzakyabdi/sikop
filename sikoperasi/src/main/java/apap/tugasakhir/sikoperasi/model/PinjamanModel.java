@@ -52,11 +52,11 @@ public class PinjamanModel implements Serializable {
 	private Integer status;
 	
 
-//	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-//	@JoinColumn(name = "id_anggota", referencedColumnName= "idAnggota", nullable = false)
-//	@OnDelete(action = OnDeleteAction.CASCADE)
-//	@JsonIgnore
-//	private AnggotaModel anggota;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "id_anggota", referencedColumnName= "id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
+	private AnggotaModel anggota;
 
 
 	public Long getId() {
@@ -128,14 +128,13 @@ public class PinjamanModel implements Serializable {
 		this.status = status;
 	}
 
+	public AnggotaModel getAnggota() {
+		return anggota;
+	}
 
-//	public AnggotaModel getAnggota() {
-//		return anggota;
-//	}
-//
-//
-//	public void setAnggota(AnggotaModel anggota) {
-//		this.anggota = anggota;
-//	}
+
+	public void setAnggota(AnggotaModel anggota) {
+		this.anggota = anggota;
+	}
 	
 }
