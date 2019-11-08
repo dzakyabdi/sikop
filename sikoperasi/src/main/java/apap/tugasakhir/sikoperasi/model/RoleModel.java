@@ -16,17 +16,17 @@ public class RoleModel implements Serializable {
     @NotNull
     @Column(name = "nama", nullable = false)
     private String nama;
+//
+//    @OneToOne(mappedBy = "role")
+//    private UserModel user;
 
-    @OneToOne(mappedBy = "role")
-    private UserModel user;
-
-    public UserModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserModel user) {
-        this.user = user;
-    }
+//    public UserModel getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(UserModel user) {
+//        this.user = user;
+//    }
 
     public Long getId() {
         return id;
