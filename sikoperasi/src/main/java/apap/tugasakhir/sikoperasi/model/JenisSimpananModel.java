@@ -18,7 +18,7 @@ public class JenisSimpananModel implements Serializable {
     @Column(name="nama", nullable = false)
     private String nama;
 
-    @OneToMany(mappedBy = "id_jenis_simpanan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "jenisSimpanan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SimpananModel> listSimpanan;
 
     public Long getId() {

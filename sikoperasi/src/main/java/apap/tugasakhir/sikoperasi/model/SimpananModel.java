@@ -27,22 +27,22 @@ public class SimpananModel implements Serializable {
     private Integer jumlah;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_jenis_simpanan", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idJenisSimpanan", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private JenisSimpananModel id_jenis_simpanan;
+    private JenisSimpananModel jenisSimpanan;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_anggota_penyetor", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idAnggotaPenyetor", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private AnggotaModel id_anggota_penyetor;
+    private AnggotaModel anggotaPenyetor;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_anggota_penerima", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idAnggotaPenerima", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private AnggotaModel id_anggota_penerima;
+    private AnggotaModel anggotaPenerima;
 
     public Long getId() {
         return id;
@@ -68,27 +68,27 @@ public class SimpananModel implements Serializable {
         this.jumlah = jumlah;
     }
 
-    public JenisSimpananModel getId_jenis_simpanan() {
-        return id_jenis_simpanan;
+    public JenisSimpananModel getJenisSimpanan() {
+        return jenisSimpanan;
     }
 
-    public void setId_jenis_simpanan(JenisSimpananModel id_jenis_simpanan) {
-        this.id_jenis_simpanan = id_jenis_simpanan;
+    public void setJenisSimpanan(JenisSimpananModel jenisSimpanan) {
+        this.jenisSimpanan = jenisSimpanan;
     }
 
-    public AnggotaModel getId_anggota_penyetor() {
-        return id_anggota_penyetor;
+    public AnggotaModel getAnggotaPenyetor() {
+        return anggotaPenyetor;
     }
 
-    public void setId_anggota_penyetor(AnggotaModel id_anggota_penyetor) {
-        this.id_anggota_penyetor = id_anggota_penyetor;
+    public void setAnggotaPenyetor(AnggotaModel anggotaPenyetor) {
+        this.anggotaPenyetor = anggotaPenyetor;
     }
 
-    public AnggotaModel getId_anggota_penerima() {
-        return id_anggota_penerima;
+    public AnggotaModel getAnggotaPenerima() {
+        return anggotaPenerima;
     }
 
-    public void setId_anggota_penerima(AnggotaModel id_anggota_penerima) {
-        this.id_anggota_penerima = id_anggota_penerima;
+    public void setAnggotaPenerima(AnggotaModel anggotaPenerima) {
+        this.anggotaPenerima = anggotaPenerima;
     }
 }

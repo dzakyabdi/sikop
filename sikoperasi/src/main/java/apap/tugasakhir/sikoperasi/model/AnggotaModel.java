@@ -48,26 +48,26 @@ public class AnggotaModel implements Serializable {
     @Column(name = "is_pengurus", nullable = false)
     private boolean is_pengurus;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "uuid_user", referencedColumnName = "uuid")
-    private UserModel user;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "uuid_user", referencedColumnName = "uuid")
+//    private UserModel user;
     
     @OneToMany(mappedBy = "anggota", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<PinjamanModel> listPinjaman;
 
-    @OneToMany(mappedBy = "id_anggota_penyetor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "anggotaPenyetor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SimpananModel> listSimpananPenyetor;
 
-    @OneToMany(mappedBy = "id_anggota_penerima", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "anggotaPenerima", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SimpananModel> listSimpananPenerima;
 
-    public UserModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserModel user) {
-        this.user = user;
-    }
+//    public UserModel getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(UserModel user) {
+//        this.user = user;
+//    }
 
     public Long getId() {
         return id;

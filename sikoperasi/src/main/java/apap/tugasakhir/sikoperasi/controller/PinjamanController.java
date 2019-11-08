@@ -25,20 +25,4 @@ public class PinjamanController {
     @Autowired
     @Qualifier("userServiceImpl")
     private UserService userService;
-
-    @RequestMapping("/dokter")
-    public String viewPeminjaman(
-            Model model
-    ) {
-        UserModel user = userService.getUser();
-
-        SimpleDateFormat formater=new SimpleDateFormat("yyyy-MM-dd");
-        String tanggal_lahir = formater.format(dokter.getTanggal_lahir());
-        String headerMessage = "Informasi Dokter " + dokter.getNama();
-
-        model.addAttribute("headerMessage", headerMessage);
-        model.addAttribute("dokter", dokter);
-        model.addAttribute("tanggal_lahir", tanggal_lahir);
-        return "view-dokter";
-    }
 }

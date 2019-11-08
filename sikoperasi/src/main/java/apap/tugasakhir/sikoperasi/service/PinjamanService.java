@@ -6,6 +6,8 @@ import apap.tugasakhir.sikoperasi.model.PinjamanModel;
 import java.util.List;
 
 public interface PinjamanService {
-    List<PinjamanModel> getAllPinjamanPengurus(int status);
-    List<PinjamanModel> getAllPinjamanAnggota(int status, AnggotaModel anggota);
+    List<PinjamanModel> getAllPinjamanByStatus(int status);
+    List<PinjamanModel> getAllPinjamanByStatusAndAnggota(int status, AnggotaModel anggota);
+    int getStatusPinjaman(String status);
+    int sumPinjaman();
 }

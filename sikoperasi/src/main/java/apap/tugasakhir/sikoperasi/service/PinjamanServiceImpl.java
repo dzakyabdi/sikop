@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,14 +17,31 @@ public class PinjamanServiceImpl implements PinjamanService {
     private PinjamanDB pinjamanDB;
 
     @Override
-    public List<PinjamanModel> getAllPinjamanPengurus(int status) {
+    public List<PinjamanModel> getAllPinjamanByStatus(int status) {
         List<PinjamanModel> listPinjamanPengurus = pinjamanDB.findAllByStatus(status);
         return listPinjamanPengurus;
     }
 
     @Override
-    public List<PinjamanModel> getAllPinjamanAnggota(int status, AnggotaModel anggota) {
-        List<PinjamanModel> listPinjamanAnggota = pinjamanDB.findAllByStatusAAndAndAnggota(status, anggota);
+    public List<PinjamanModel> getAllPinjamanByStatusAndAnggota(int status, AnggotaModel anggota) {
+        List<PinjamanModel> listPinjamanAnggota = pinjamanDB.findAllByStatusAndAnggota(status, anggota);
         return listPinjamanAnggota;
+    }
+
+    @Override
+    public int getStatusPinjaman(String status) {
+        List<String> listStatus = new ArrayList<>(List.of("Menunggu persetujuan",
+                                                    "Ditolak",
+                                                    "Disetujui",
+                                                    "Sudah diambil",
+                                                    "Sudah dikembalikan",
+                                                    "Overdue"));
+        int statusCode = listStatus.indexOf(status);
+        return statusCode;
+    }
+
+    @Override
+    public int sumPinjaman() {
+        return pinjamanDB.sumPinjaman();
     }
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeLeaf.org">
+<head>
+    <title>Semua Dokter</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<h2 style="text-align: center">Sistem Informasi Dokter</h2>
+<div class="card border-success mb-3" style="max-width: 90%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 70px;">
+    <div class="card-header bg-success text-white">Laporan Keuangan</div>
+    <div class="card-body text-success">
+        <table id="table_id" class="hover">
+            <thead style="color: #1e7e34">
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Tangal</th>
+                <th scope="col">Simpanan</th>
+                <th scope="col">Pinjaman</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="simpanan, i : ${listSimpanan}">
+                <td scope="row" th:text="${i.count}"> </td>
+                <td th:text="${simpanan.tanggal_setor}"></td>
+                <td th:text="${simpanan.jumlah}"> </td>
+                <td>-</td>
+            </tr>
+            <tr th:each="pinjaman, ii : ${listPinjaman}">
+                <td scope="row" th:text="${ii.count}"> </td>
+                <td th:text="${pinjaman.tanggalDisetujui}"></td>
+                <td>-</td>
+                <td th:text="${pinjaman.jumlahPinjaman}"> </td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td></td>
+                <td th:text="${jumlahSimpanan}"></td>
+                <td th:text="${jumlahPinjaman}"> </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a th:href="@{/dokter/tambah}" class="btn btn-sm btn-dark" style="margin-top: 20px"> Tambah Dokter </a>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/fragment :: footer"></div>
+<script>
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    } );
+</script>
+</body>
+
+</html>

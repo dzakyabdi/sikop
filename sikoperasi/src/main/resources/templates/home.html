@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeLeaf.org">
+<head>
+    <title>Home</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<h1>Hello</h1>
+<form th:action="@{/laporan-keuangan}"method="get">
+    Nama : <br>
+    <input type="text" name="nia"/>
+    <button type="submit">Submit</button>
+</form>
+</body>
+
+</html>
