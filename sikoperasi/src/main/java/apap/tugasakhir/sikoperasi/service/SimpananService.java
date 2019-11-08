@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SimpananService {
     List<SimpananModel> getAllSimpananByAnggota(AnggotaModel anggota);
-    int sumSimpanan();
+    int sumSimpanan(AnggotaModel anggota);
 }

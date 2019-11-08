@@ -12,6 +12,6 @@ import java.util.List;
 public interface PinjamanDB extends JpaRepository<PinjamanModel, Long> {
     List<PinjamanModel> findAllByStatus(int status);
     List<PinjamanModel> findAllByStatusAndAnggota(int status, AnggotaModel anggota);
-    @Query(value = "SELECT SUM(m.jumlahPinjaman) FROM PinjamanModel m")
-    int sumPinjaman();
+    @Query(value = "SELECT SUM(m.jumlahPinjaman) FROM PinjamanModel m WHERE m.anggota = ?1")
+    Integer sumPinjaman(AnggotaModel anggota);
 }

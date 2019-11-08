@@ -22,7 +22,10 @@ public class SimpananServiceImpl implements SimpananService {
     }
 
     @Override
-    public int sumSimpanan() {
-        return simpananDB.sumSimpanan();
+    public int sumSimpanan(AnggotaModel anggota) {
+        if (simpananDB.sumSimpanan(anggota) == null){
+            return 0;
+        }
+        return simpananDB.sumSimpanan(anggota);
     }
 }

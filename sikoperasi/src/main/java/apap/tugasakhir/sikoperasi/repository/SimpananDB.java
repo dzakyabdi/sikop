@@ -12,6 +12,6 @@ import java.util.List;
 public interface SimpananDB extends JpaRepository<SimpananModel, Long> {
     List<SimpananModel> findAllByAnggotaPenyetor(AnggotaModel anggotaPenyetor);
 
-    @Query(value = "SELECT sum(m.jumlah) FROM SimpananModel m")
-    int sumSimpanan();
+    @Query(value = "SELECT sum(m.jumlah) FROM SimpananModel m WHERE m.anggotaPenyetor = ?1")
+    Integer sumSimpanan(AnggotaModel anggota);
 }

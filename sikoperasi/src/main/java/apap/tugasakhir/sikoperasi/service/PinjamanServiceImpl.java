@@ -41,7 +41,10 @@ public class PinjamanServiceImpl implements PinjamanService {
     }
 
     @Override
-    public int sumPinjaman() {
-        return pinjamanDB.sumPinjaman();
+    public int sumPinjaman(AnggotaModel anggota) {
+        if (pinjamanDB.sumPinjaman(anggota) == null){
+            return 0;
+        }
+        return pinjamanDB.sumPinjaman(anggota);
     }
 }

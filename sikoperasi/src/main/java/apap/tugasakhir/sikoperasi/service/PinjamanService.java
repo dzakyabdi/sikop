@@ -9,5 +9,5 @@ public interface PinjamanService {
     List<PinjamanModel> getAllPinjamanByStatus(int status);
     List<PinjamanModel> getAllPinjamanByStatusAndAnggota(int status, AnggotaModel anggota);
     int getStatusPinjaman(String status);
-    int sumPinjaman();
+    int sumPinjaman(AnggotaModel anggota);
 }
