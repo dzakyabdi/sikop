@@ -12,12 +12,17 @@ import javax.transaction.Transactional;
 @Transactional
 public class AnggotaServiceImpl implements AnggotaService {
     @Autowired
-    private AnggotaDB anggotaDB;
+    private AnggotaDB anggotaDb;
 
     @Override
     public AnggotaModel getAnggotaByNia(String nia) {
-        AnggotaModel anggota = anggotaDB.findByNia(nia);
+        AnggotaModel anggota = anggotaDb.findByNia(nia);
         return anggota;
+    }
+
+    @Override
+    public AnggotaModel getAnggotaById(Long id) {
+        return anggotaDb.findById(id).get();
     }
 
 //    @Override

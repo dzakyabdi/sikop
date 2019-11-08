@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Detail Pinjaman</title>
+                <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		
+        <!-- jquery, ajax, and bootstrap.js -->
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                <script th:src="@{/js/bootstrap.min.js}"></script>
+	</head>
+	<body>
+		<div class="col-sm-3"></div>
+		<div class="container-fluid col-sm-6" style= "border-style:ridge; margin-top: 20px; margin-bottom: 20px; padding-bottom: 10px;">
+			<h2 style="background-color:#7B3C59; ; margin-top: 10px; margin-bottom: 10px; padding: 10px; color: white;">Detail Pinjaman</h2>
+			<div class="row">
+				<div class="col-sm-6">Tanggal Pengajuan</div>
+				<div class="col-sm-6">
+					<p th:text="${#dates.format(pinjaman.tanggalPengajuan, 'yyyy-MM-dd')}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Tanggal Disetujui</div>
+				<div class="col-sm-6">
+					<p th:text="${#dates.format(pinjaman.tanggalDisetujui, 'yyyy-MM-dd')}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Tanggal Pengembalian</div>
+				<div class="col-sm-6">
+					<p th:text="${#dates.format(pinjaman.tanggalPengembalian, 'yyyy-MM-dd')}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Jumlah Pinjaman</div>
+				<div class="col-sm-6">
+					<p th:text="${pinjaman.jumlahPinjaman}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Jumlah Pengembalian</div>
+				<div class="col-sm-6">
+					<p th:text="${pinjaman.jumlahPengembalian}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Status</div>
+				<div class="col-sm-6">
+					<p th:text="${status}"></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+	</body>
+</html>

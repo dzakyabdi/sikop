@@ -1,5 +1,6 @@
 package apap.tugasakhir.sikoperasi.service;
 
+import java.util.Optional;
 import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.PinjamanModel;
 import apap.tugasakhir.sikoperasi.repository.PinjamanDB;
@@ -14,17 +15,22 @@ import java.util.List;
 @Transactional
 public class PinjamanServiceImpl implements PinjamanService {
     @Autowired
-    private PinjamanDB pinjamanDB;
+    private PinjamanDB pinjamanDb;
+
+    @Override
+    public Optional<PinjamanModel> getPinjamanById(Long id){
+        return pinjamanDb.findById(id);
+    }
 
     @Override
     public List<PinjamanModel> getAllPinjamanByStatus(int status) {
-        List<PinjamanModel> listPinjamanPengurus = pinjamanDB.findAllByStatus(status);
+        List<PinjamanModel> listPinjamanPengurus = pinjamanDb.findAllByStatus(status);
         return listPinjamanPengurus;
     }
 
     @Override
     public List<PinjamanModel> getAllPinjamanByStatusAndAnggota(int status, AnggotaModel anggota) {
-        List<PinjamanModel> listPinjamanAnggota = pinjamanDB.findAllByStatusAndAnggota(status, anggota);
+        List<PinjamanModel> listPinjamanAnggota = pinjamanDb.findAllByStatusAndAnggota(status, anggota);
         return listPinjamanAnggota;
     }
 
@@ -42,9 +48,9 @@ public class PinjamanServiceImpl implements PinjamanService {
 
     @Override
     public int sumPinjaman(AnggotaModel anggota) {
-        if (pinjamanDB.sumPinjaman(anggota) == null){
+        if (pinjamanDb.sumPinjaman(anggota) == null){
             return 0;
         }
-        return pinjamanDB.sumPinjaman(anggota);
+        return pinjamanDb.sumPinjaman(anggota);
     }
 }
