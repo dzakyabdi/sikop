@@ -7,9 +7,18 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PinjamanService {
-    List<PinjamanModel> getAllPinjamanByStatus(int status);
+    List<PinjamanModel> getPinjamanList();
+
+    PinjamanModel getPinjamanByAnggota(AnggotaModel anggota);
+
     Optional<PinjamanModel> getPinjamanById(Long id);
+
     List<PinjamanModel> getAllPinjamanByStatusAndAnggota(int status, AnggotaModel anggota);
+
     int getStatusPinjaman(String status);
+
     int sumPinjaman(AnggotaModel anggota);
+
+    List<PinjamanModel> getAllPinjamanByStatus(int status);
+
 }
