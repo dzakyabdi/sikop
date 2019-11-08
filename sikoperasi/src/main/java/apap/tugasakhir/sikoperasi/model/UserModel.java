@@ -22,15 +22,12 @@
 //    @Column(name = "password", nullable = false)
 //    private String password;
 //
-
 //    @OneToOne(mappedBy = "user")
 //    private AnggotaModel anggota;
-
 //
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "id_role", referencedColumnName = "id")
 //    private RoleModel role;
-
 
 //    public AnggotaModel getAnggota() {
 //        return anggota;
@@ -39,7 +36,6 @@
 //    public void setAnggota(AnggotaModel anggota) {
 //        this.anggota = anggota;
 //    }
-
 //
 //    public RoleModel getRole() {
 //        return role;
@@ -73,4 +69,3 @@
 //        this.uuid = uuid;
 //    }
 //}
-

@@ -13,9 +13,20 @@ import java.util.List;
 
 @Service
 @Transactional
-public class PinjamanServiceImpl implements PinjamanService {
+public class PinjamanServiceImpl implements PinjamanService{
+
     @Autowired
     private PinjamanDB pinjamanDb;
+
+    @Override
+    public List<PinjamanModel> getPinjamanList(){
+        return pinjamanDb.findAllByOrderByIdAsc();
+    }
+
+    @Override
+    public PinjamanModel getPinjamanByAnggota(AnggotaModel anggota){
+        return pinjamanDb.findByAnggota(anggota);
+    }
 
     @Override
     public Optional<PinjamanModel> getPinjamanById(Long id){
