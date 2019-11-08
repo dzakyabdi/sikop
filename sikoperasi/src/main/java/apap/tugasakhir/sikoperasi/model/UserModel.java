@@ -28,7 +28,7 @@
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "id_role", referencedColumnName = "id")
 //    private RoleModel role;
-//
+
 //    public AnggotaModel getAnggota() {
 //        return anggota;
 //    }
