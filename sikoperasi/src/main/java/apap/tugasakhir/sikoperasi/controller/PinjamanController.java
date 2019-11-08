@@ -33,8 +33,22 @@ public class PinjamanController {
 
     @RequestMapping(value = "/pinjaman/view", method = RequestMethod.GET)
     public String viewPinjaman(@RequestParam(value = "id") Long id, Model model){
-        PinjamanModel pinjaman =  pinjamanService.getPinjamanById(id);
+        PinjamanModel pinjaman =  pinjamanService.getPinjamanById(id).get();
         model.addAttribute(pinjaman);
         return "view-pinjaman";
+    }
+
+    @RequestMapping("pinjaman/detail")
+    public String viewById(
+            @RequestParam("idPinjaman") Long idPinjaman, Model model) {
+        PinjamanModel existingPinjaman = pinjamanService.getPinjamanById(idPinjaman).get();
+        if( existingPinjaman.getStatus() == 0) { model.addAttribute("status", "Menunggu Persetujuan"); }
+        else if ( existingPinjaman.getStatus() == 1) { model.addAttribute("status", "Ditolak"); }
+        else if ( existingPinjaman.getStatus() == 2) { model.addAttribute("status", "Disetujui"); }
+        else if ( existingPinjaman.getStatus() == 3) { model.addAttribute("status", "Sudah Diambil"); }
+        else if ( existingPinjaman.getStatus() == 4) { model.addAttribute("status", "Sudah Dikembalikan"); }
+        else if ( existingPinjaman.getStatus() == 5) { model.addAttribute("status", "Overdue"); }
+        model.addAttribute("pinjaman", existingPinjaman);
+        return "detail-pinjaman";
     }
 }
