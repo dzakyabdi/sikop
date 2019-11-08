@@ -6,4 +6,5 @@
 //
 //@Repository
 //public interface UserDB extends JpaRepository<UserModel, Long> {
+//    UserModel findByUsername(String username);
 //}
