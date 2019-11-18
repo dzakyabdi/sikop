@@ -7,4 +7,5 @@ public interface AnggotaService {
     AnggotaModel getAnggotaByNia(String nia);
     AnggotaModel getAnggotaById(Long id);
 //    AnggotaModel getAnggotaByUser(UserModel user);
+    void addAnggota(AnggotaModel anggota);
 }
