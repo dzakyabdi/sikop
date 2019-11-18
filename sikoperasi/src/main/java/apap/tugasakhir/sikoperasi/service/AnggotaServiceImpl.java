@@ -25,6 +25,11 @@ public class AnggotaServiceImpl implements AnggotaService {
         return anggotaDb.findById(id).get();
     }
 
+    @Override
+    public void addAnggota(AnggotaModel anggota) {
+        anggotaDb.save(anggota);
+    }
+
 //    @Override
 //    public AnggotaModel getAnggotaByUser(UserModel user) {
 //        AnggotaModel anggota = anggotaDB.findByUser(user);

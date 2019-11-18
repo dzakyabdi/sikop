@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Tambah Anggota</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<div class="container" style="margin-top:30px">
+    <h2>Tambah Anggota</h2>
+    <form class="form-horizontal" th:action="@{/anggota/tambah}" th:object="${anggota}" method="post">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Nama</label>
+            <div class="col-sm-10">
+                <input type="text" th:placeholder="${anggota.nama}" th:value="${anggota.nama}" class="form-control" name="nama">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">KTP</label>
+            <div class="col-sm-10">
+                <input type="text" th:placeholder="${anggota.ktp}" th:value="${anggota.ktp}" class="form-control" name="ktp">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Tempat Lahir</label>
+            <div class="col-sm-10">
+                <input type="text" th:placeholder="${anggota.tempat_lahir}" th:value="${anggota.tempat_lahir}" class="form-control" name="tempat_lahir">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Tanggal Lahir</label>
+            <div class="col-sm-10">
+                <input type="date" th:placeholder="${anggota.tanggal_lahir}" th:value="${anggota.tanggal_lahir}" class="form-control"name="tanggal_lahir">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Alamat</label>
+            <div class="col-sm-10">
+                <input type="type" th:placeholder="${anggota.alamat}" th:value="${anggota.alamat}" class="form-control"name="alamat">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Telepon</label>
+            <div class="col-sm-10">
+                <input type="text" th:placeholder="${anggota.nomor_telepon}" th:value="${anggota.nomor_telepon}" class="form-control"name="nomor_telepon">
+            </div>
+        </div>
+        <div class="form-group" th:each="jenis:listJenis">
+            <label class="control-label col-sm-2">Pengurus</label>
+            <select class="form-control" id="sel1" name="is_pengurus" th:placeholder="${anggota.is_pengurus}" th:value="${anggota.is_pengurus}">
+                <option th:value="null">-- Pilih Pengurus --</option>
+                <option th:value="true">Ya</option>
+                <option th:value="false">Tidak</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-dark" name="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

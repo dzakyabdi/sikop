@@ -1,5 +1,5 @@
 # TA_E_1 : SISTEM INFORMASI KOPERASI
-## Authors : KELOMPOK 1 (G)
+## Authors : KELOMPOK 1 (E)
 * **Siti Kaamiliaa Hasnaa** - *1706984732* - *C*
 * **Mohammad Wildan Yanuar** - *1706043973* - *C*
 * **Dzaky Abdi Al Jabbar** - *1706043462* - *C*
