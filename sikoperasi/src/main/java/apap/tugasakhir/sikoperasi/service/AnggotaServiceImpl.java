@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -30,7 +31,12 @@ public class AnggotaServiceImpl implements AnggotaService {
         anggotaDb.save(anggota);
     }
 
-//    @Override
+    @Override
+    public List<AnggotaModel> getAllAnggota() {
+        return anggotaDb.findAll();
+    }
+
+    //    @Override
 //    public AnggotaModel getAnggotaByUser(UserModel user) {
 //        AnggotaModel anggota = anggotaDB.findByUser(user);
 //        return anggota;
