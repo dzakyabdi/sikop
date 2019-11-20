@@ -23,7 +23,31 @@ public class AnggotaController {
         AnggotaModel anggota = anggotaService.getAnggotaById(id);
 
         model.addAttribute("anggota", anggota);
-        return "detail-anggota";
+        return "detailAnggota";
+    }
+
+    @RequestMapping(value = "/anggota/tambah", method = RequestMethod.GET)
+    public String tambahAnggotaFormPage(Model model) {
+        AnggotaModel anggota = new AnggotaModel();
+
+        model.addAttribute("anggota", anggota);
+
+        return "form-tambah-anggota";
+    }
+
+    @RequestMapping(value = "/anggota/tambah", method = RequestMethod.POST)
+    public String tambahAnggotaFormSubmit(@ModelAttribute AnggotaModel anggota, Model model) {
+        String nia = "";
+        Random random = new Random();
+        for(int i = 0; i < 8; i++) {
+            int x = random.nextInt(10);
+            nia += String.valueOf(x);
+        }
+        anggota.setNia(nia);
+        anggotaService.addAnggota(anggota);
+
+        model.addAttribute("anggota", anggota);
+        return "tambah-anggota";
     }
 
     @RequestMapping(value = "/anggota/tambah", method = RequestMethod.GET)
