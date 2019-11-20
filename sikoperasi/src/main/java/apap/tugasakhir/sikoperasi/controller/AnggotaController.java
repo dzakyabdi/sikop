@@ -23,7 +23,7 @@ public class AnggotaController {
         AnggotaModel anggota = anggotaService.getAnggotaById(id);
 
         model.addAttribute("anggota", anggota);
-        return "detail-anggota";
+        return "detailAnggota";
     }
 
     @RequestMapping(value = "/anggota/tambah", method = RequestMethod.GET)
