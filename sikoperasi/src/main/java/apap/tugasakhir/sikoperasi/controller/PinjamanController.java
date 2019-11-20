@@ -1,6 +1,8 @@
 package apap.tugasakhir.sikoperasi.controller;
 
+import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.PinjamanModel;
+import apap.tugasakhir.sikoperasi.service.AnggotaService;
 import apap.tugasakhir.sikoperasi.service.PinjamanService;
 import org.hibernate.tool.hbm2ddl.SchemaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class PinjamanController {
     @Qualifier("pinjamanServiceImpl")
     @Autowired
     private PinjamanService pinjamanService;
+    
+    @Autowired
+    private AnggotaService anggotaService;
 
     @RequestMapping(value = "/")
     public String homepage(){
@@ -50,5 +55,19 @@ public class PinjamanController {
         else if ( existingPinjaman.getStatus() == 5) { model.addAttribute("status", "Overdue"); }
         model.addAttribute("pinjaman", existingPinjaman);
         return "detail-pinjaman";
+    }
+    
+    @RequestMapping(value="pinjaman/ajukan", method = RequestMethod.GET)
+    public String addPinjaman(Model model) {
+    	PinjamanModel newPinjaman = new PinjamanModel();
+    	List<AnggotaModel> listAnggota = anggotaService.getAnggotaList();
+    	model.addAttribute("pinjaman", newPinjaman);
+    	model.addAttribute("allAnggota", listAnggota);
+    	return "form-ajukan-pinjaman";
+    }
+    
+    @RequestMapping(value="pinjaman/ajukan", method = RequestMethod.POST)
+    public String submitAddPinjaman(@ModelAttribute PinjamanModel pinjaman, Model model) {
+    	
     }
 }
