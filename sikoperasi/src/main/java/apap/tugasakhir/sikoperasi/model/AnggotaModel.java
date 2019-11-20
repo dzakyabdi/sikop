@@ -1,5 +1,7 @@
 package apap.tugasakhir.sikoperasi.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -34,6 +36,7 @@ public class AnggotaModel implements Serializable {
 
     @NotNull
     @Column(name = "tanggal_lahir", nullable = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date tanggal_lahir;
 
     @NotNull

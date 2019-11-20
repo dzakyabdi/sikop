@@ -3,36 +3,79 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Home</title>
     <head th:fragment="css">
-        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <link th:href="@{/css/creative.min.css}" rel="stylesheet">
+        <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+        <link th:href="@{https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700}" rel="stylesheet">
+        <link th:href="@{https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic}" rel='stylesheet' type='text/css'>
+        <link th:href="@{/vendor/magnific-popup/magnific-popup.css}" rel="stylesheet">
+        <!-- <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"> -->
     </head>
 
     <head th:fragment="js">
+        <!-- Bootstrap core JavaScript -->
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="/js/creative.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     </head>
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light fixed-top py-3 bg-primary" id="mainNav">
+                <div class="container">
+                <img src="../img/logo.png" style="width:50px;height:50px;">
+                  <a class="navbar-brand js-scroll-trigger" th:href="@{/}">SI-KOPERASI</a>
+                  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" th:href="@{#}">Anggota</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" th:href="@{#}">Simpanan</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" th:href="@{/pinjaman/view-all}">Pinjaman</a>
+                      </li>
+                      <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" th:href="@{#}">Laporan</a>
+                          </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+<!-- <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#" th:text="${brand}"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" th:href="@{/}">SI-KOPERASI <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" th:href="@{/}">Anggota <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" th:href="@{/pinjaman/view-all}">Pinjaman <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" th:href="@{/}">Laporan <span class="sr-only">(current)</span></a>
+                <li><a class="nav-item nav-link active" th:href="@{/}">SI-KOPERASI <span class="sr-only">(current)</span></a></li>
+
+                <a class="nav-item nav-link active" th:href="@{/}">Anggota <span class="sr-only">(current)</span></a>
+
+                <a class="nav-item nav-link active" th:href="@{/pinjaman/view-all}">Pinjaman <span class="sr-only">(current)</span></a>
 
 
+                <a class="nav-item nav-link active" th:href="@{/}">Laporan <span class="sr-only">(current)</span></a>
+
+                <a class="nav-item nav-link active" th:href="@{/logout}">Logout</a>
 
         </div>
     </div>
-    <div class="navbar-nav pull-right">
-        <a class="nav-item nav-link active" th:href="@{/logout}">Logout</a>
-    </div>
-</nav>
+</nav> -->
 </body>
 </html>
