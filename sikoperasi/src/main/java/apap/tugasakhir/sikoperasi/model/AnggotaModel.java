@@ -144,13 +144,13 @@ public class AnggotaModel implements Serializable {
         this.is_pengurus = is_pengurus;
     }
 
-//	public List<PinjamanModel> getListPinjaman() {
-//		return listPinjaman;
-//	}
-//
-//	public void setListPinjaman(List<PinjamanModel> listPinjaman) {
-//		this.listPinjaman = listPinjaman;
-//	}
+	public List<PinjamanModel> getListPinjaman() {
+		return listPinjaman;
+	}
+
+	public void setListPinjaman(List<PinjamanModel> listPinjaman) {
+		this.listPinjaman = listPinjaman;
+	}
 //
 //    public List<SimpananModel> getListSimpananPenyetor() {
 //        return listSimpananPenyetor;
