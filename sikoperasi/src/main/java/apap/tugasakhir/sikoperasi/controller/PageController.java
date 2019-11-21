@@ -23,7 +23,7 @@ public class PageController {
         if(rawDataUser.getAuthorities().toString().contains("ADMIN")){
             model.addAttribute("admin", "true");
         }
-        return "homepage";
+        return "home";
     }
 
     @RequestMapping("/login")

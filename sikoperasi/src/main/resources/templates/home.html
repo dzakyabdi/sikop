@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top:120px">
     <h2 style="text-align: center">Selamat Datang Di GOPUD!</h2>
     <h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser} + ' !'"></h2>
     <button class="btn btn-primary">
@@ -16,7 +16,7 @@
     </button>
 </div>
 
-<div th:if="${admin == 'true'}" class="row">
+<div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
@@ -29,12 +29,12 @@
                     <input type="text" name="username" class="form-control"/>
 
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control" pattern="/(?=.*\d)(?=.*[a-zA-Z]).{8,}/"/>
-
+                    <input type="password" name="password" class="form-control" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/>
+                    
                     <label>Role</label>
                     <select name="role" class="form-control">
                         <option selected value="">--Pilih Role--</option>
-                        <option th:each="roleAvailable : ${listRole}" th:value="${roleAvailable.id}" th:text="${roleAvailable.role}"></option>
+                        <option th:each="roleAvailable : ${listRole}" th:value="${roleAvailable.id}" th:text="${roleAvailable.nama}"></option>
                     </select>
 
                     <br>
