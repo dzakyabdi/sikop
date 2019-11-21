@@ -19,11 +19,6 @@ public class PinjamanController {
     @Autowired
     private PinjamanService pinjamanService;
 
-    @RequestMapping(value = "/")
-    public String homepage(){
-        return "homepage";
-    }
-
     @RequestMapping(value = "/pinjaman/view-all", method = RequestMethod.GET)
     public String viewPinjamanList(Model model){
         List<PinjamanModel> pinjamanList =  pinjamanService.getPinjamanList();
