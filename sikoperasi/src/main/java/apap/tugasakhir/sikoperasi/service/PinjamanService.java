@@ -20,5 +20,6 @@ public interface PinjamanService {
     int sumPinjaman(AnggotaModel anggota);
 
     List<PinjamanModel> getAllPinjamanByStatus(int status);
-
+    
+    void addPinjaman(PinjamanModel pinjaman);
 }

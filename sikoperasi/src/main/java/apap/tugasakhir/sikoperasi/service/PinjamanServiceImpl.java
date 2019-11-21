@@ -17,7 +17,12 @@ public class PinjamanServiceImpl implements PinjamanService{
 
     @Autowired
     private PinjamanDB pinjamanDb;
-
+    
+    @Override
+    public void addPinjaman(PinjamanModel pinjaman) {
+    	pinjamanDb.save(pinjaman);
+    }
+    
     @Override
     public List<PinjamanModel> getPinjamanList(){
         return pinjamanDb.findAllByOrderByIdAsc();
