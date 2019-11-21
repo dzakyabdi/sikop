@@ -10,10 +10,11 @@
     <div>
             <nav th:replace="fragments/fragment :: navbar"></nav>
     </div>
-    <div class="container" style="margin-top: 100px;">
-    <h2>Daftar Pinjaman</h2>
+    <div class="container main-cont">
+    <h2 style="text-align: center;">Daftar Pinjaman</h2>
     <table class="table">
-        <thead>
+        <thead style="background: rgb(180,58,77);
+        background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%);">
         <tr>
             <th>No</th>
             <th>Nama</th>
@@ -32,7 +33,7 @@
             <td><a th:text="${pinjaman.getJumlahPengembalian()}"></a></td>
             <td>
                 <button class="btn btn-sm btn-warning" >
-                <a th:href="@{/pinjaman/view?id={id}(id=${pinjaman.id})}" style="color: white;">Lihat</a>
+                <a th:href="@{/pinjaman/view?idPinjaman={idPinjaman}(idPinjaman=${pinjaman.id})}" style="color: white;">Lihat</a>
             </button>
             </td>
         </tr>
