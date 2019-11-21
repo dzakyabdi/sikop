@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+        <title>SI-KOPERASI</title>
+      
+        <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+        <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <div>
+        <nav th:replace="fragments/fragment :: navbar"></nav>
+    </div>
+    <div class="container main-cont">
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-md-4 control-label" >Usernama</label>
+                <h5 th:text="${user.username}"></h5>
+            </div>
+            <div class="row">
+                    <label class="col-md-4 control-label" >Role</label>
+                    <h5 th:text="${user.role.getNama()}"></h5>
+            </div>
+        </div>
+        <div class="col-sm-6" th:if="{isSivitas}">
+            <div class="row">
+                <span th:if="{isPegawai}">
+                    <label class="col-md-4 control-label" >NIP</label>
+                    <h5 th:text="${sivitas.get('result').get('nip')}"></h5>
+                </span>
+                <span th:unless="{isPegawai}">
+                    <label class="col-md-4 control-label" >NIG</label>
+                    <h5 th:text="${sivitas.nig}"></h5>
+                </span>
+            </div>
+            <div class="row">
+                    <label class="col-md-4 control-label" >Nama</label>
+                    <h5 th:text="${sivitas.get('result').get('nama')}"></h5>
+            </div>
+            <div class="row">
+                    <label class="col-md-4 control-label" >Tempat Lahir</label>
+                    <h5 th:text="${sivitas.get('result').get('tempatLahir')}"></h5>
+            </div>
+            <div class="row">
+                    <label class="col-md-4 control-label" >Tanggal Lahir</label>
+                    <h5 th:text="${sivitas.get('result').get('tanggalLahir')}"></h5>
+            </div>
+            <div class="row">
+                    <label class="col-md-4 control-label">Alamat</label>
+                    <h5 th:text="${sivitas.get('result').get('alamat')}"></h5>
+            </div>
+            <div class="row">
+                    <label class="col-md-4 control-label">Telepon</label>
+                    <h5 th:text="${sivitas.get('result').get('telepon')}"></h5>
+            </div>
+        </div>
+    
+</body>

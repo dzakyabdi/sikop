@@ -11,25 +11,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.PinjamanModel;
-import apap.tugasakhir.sikoperasi.service.PinjamanRestService;
+import apap.tugasakhir.sikoperasi.rest.PinjamanDetail;
+import apap.tugasakhir.sikoperasi.service.AnggotaService;
+import apap.tugasakhir.sikoperasi.service.PinjamanService;
 
 @RestController
-@RequestMapping("/api")
 public class PinjamanRestController {
 	@Autowired
-	private PinjamanRestService pinjamanRestService;
+	private PinjamanService pinjamanService;
 	
-	@PostMapping(value="/pinjaman")
-	private PinjamanModel createPinjaman(@Valid @RequestBody PinjamanModel pinjaman, BindingResult bindingResult) {
+	@Autowired
+    private AnggotaService anggotaService;
+	
+	@PostMapping(value="/api/pinjaman/ajukan")
+	private PinjamanDetail createPinjaman(@Valid @RequestBody PinjamanDetail pinjaman, BindingResult bindingResult) {
 		if(bindingResult.hasFieldErrors()) {
 			throw new ResponseStatusException(
 					HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field");
 		} else {
-			pinjaman.setStatus(0);
-			pinjaman.setJumlahPengembalian(0);
-			return pinjamanRestService.createPinjaman(pinjaman);
+			PinjamanModel newPinjaman = new PinjamanModel();
+			newPinjaman.setStatus(0);
+			newPinjaman.setJumlahPengembalian(0);
+			AnggotaModel anggota = anggotaService.getAnggotaById(Long.valueOf(pinjaman.getIdAnggota()));
+			if (anggota == null) {
+				throw new ResponseStatusException(
+						HttpStatus.NOT_FOUND, "Anggota with ID " + pinjaman.getIdAnggota() + " not found!");
+			} else {
+				newPinjaman.setAnggota(anggota);
+				pinjamanService.addPinjaman(newPinjaman);
+				return pinjaman;
+			}
 		}
 	}
-
+	
 }
