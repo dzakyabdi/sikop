@@ -34,5 +34,7 @@ public class RuanganController {
         String keterangan = req.getParameter("keterangan");
         String nomorSurat = req.getParameter("nomorSurat");
         String uuid_user_peminjam = req.getParameter("uuid_user_peminjam");
+
+        return "action-success";
     }
 }
