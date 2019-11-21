@@ -8,12 +8,56 @@
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<h1>Hello</h1>
-<form th:action="@{/laporan-keuangan}"method="get">
-    Nama : <br>
-    <input type="text" name="nia"/>
-    <button type="submit">Submit</button>
-</form>
+<div class="container-fluid" style="margin-top:120px">
+    <h2 style="text-align: center">Selamat Datang Di GOPUD!</h2>
+    <h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser} + ' !'"></h2>
+    <button class="btn btn-primary">
+        <a th:href="@{user/changePassword}" style="color: white"> Change Password </a>
+    </button>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Tambah User Baru
+            </div>
+            <div class="card-body">
+                <h3 th:text="${notification}" style="text-align: center; color: red;"></h3>
+                <form th:action="@{/user/addUser}" method="POST">
+                    <label>User Name</label>
+                    <input type="text" name="username" class="form-control"/>
+
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/>
+                    
+                    <label>Role</label>
+                    <select name="role" class="form-control">
+                        <option selected value="">--Pilih Role--</option>
+                        <option th:each="roleAvailable : ${listRole}" th:value="${roleAvailable.id}" th:text="${roleAvailable.nama}"></option>
+                    </select>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<br>-->
+<!--<h2>Selamat Datang Di GOPUD!</h2>-->
+<!--<h3>Tambah Restoran</h3>-->
+<!--<td> <a th:href="@{/restoran/add}">Tambah Restoran</a></td>-->
+
+<!--<h3>Cari Restoran Berdasarkan ID</h3>-->
+<!--<form th:action="@{/restoran/view}" method="get">-->
+<!--    Id Restoran : <br>-->
+<!--    <input type="text" name="idRestoran"/>-->
+<!--    <button type="submit">Cari</button>-->
+<!--</form>-->
+
+<!--</br>-->
+<!--<td> <a th:href="@{/restoran/view-all}">View All</a></td>-->
 </body>
 
 </html>
