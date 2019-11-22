@@ -1,5 +1,9 @@
 package apap.tugasakhir.sikoperasi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.apache.catalina.User;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -43,4 +47,5 @@ public class RoleModel implements Serializable {
     public void setNama(String nama) {
         this.nama = nama;
     }
+
 }

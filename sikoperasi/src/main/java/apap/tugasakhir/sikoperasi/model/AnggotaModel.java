@@ -64,6 +64,13 @@ public class AnggotaModel implements Serializable {
     @OneToMany(mappedBy = "anggotaPenerima", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SimpananModel> listSimpananPenerima;
 
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
@@ -135,14 +142,6 @@ public class AnggotaModel implements Serializable {
 
     public void setIs_pengurus(boolean is_pengurus) {
         this.is_pengurus = is_pengurus;
-    }
-
-    public UserModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserModel user) {
-        this.user = user;
     }
 
     public List<PinjamanModel> getListPinjaman() {

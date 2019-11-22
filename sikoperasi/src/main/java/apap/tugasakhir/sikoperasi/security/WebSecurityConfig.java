@@ -17,14 +17,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/css/**").permitAll()
-                .antMatchers("/js/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .defaultSuccessUrl("/");
-
+//                .authorizeRequests()
+//                .antMatchers("/css/**").permitAll()
+//                .antMatchers("/js/**").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .defaultSuccessUrl("/", true)
+//                .loginPage("/login").permitAll()
+//                .and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
+                .csrf().disable();
     }
 
     @Bean
@@ -40,13 +43,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("Pengurus Koperasi");
     }
 
-//    @Autowired
-//    private UserDetailsService userDetailsService;
-//
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
-//    }
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+    }
 
 
 }
