@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PeminjamanDetail {
+
+    private String status;
+
     @JsonProperty("idRuang")
     private Long idRuang;
 
@@ -35,6 +38,14 @@ public class PeminjamanDetail {
 
     @JsonProperty("uuid_user_peminjam")
     private String uuidUserPeminjam;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Long getIdRuang() {
         return idRuang;

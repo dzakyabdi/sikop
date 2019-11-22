@@ -19,9 +19,7 @@ public class RuanganRestServiceImpl implements RuanganRestService {
     }
 
     @Override
-    public PeminjamanDetail postPeminjamanRuang(Map requestBody) {
-        System.out.println(requestBody);
-        JSONObject jsonObject = new JSONObject(requestBody);
+    public PeminjamanDetail postPeminjamanRuang(JSONObject jsonObject) {
         String jsonReqBody = jsonObject.toString();
         System.out.println(jsonReqBody);
 
@@ -30,5 +28,30 @@ public class RuanganRestServiceImpl implements RuanganRestService {
                 .syncBody(jsonReqBody)
                 .retrieve()
                 .bodyToMono(PeminjamanDetail.class).block();
+    }
+
+    @Override
+    public JSONObject convertToJSONObject(String idRuang,
+                                          String waktuMulai,
+                                          String waktuSelesai,
+                                          String tanggalMulai,
+                                          String tanggalSelesai,
+                                          String tujuan,
+                                          String jumlahPeserta,
+                                          String keterangan,
+                                          String nomorSurat,
+                                          String uuid_user_peminjam) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("idRuang", idRuang);
+        jsonObject.put("waktuMulai", waktuMulai);
+        jsonObject.put("waktuSelesai", waktuSelesai);
+        jsonObject.put("tanggalMulai", tanggalMulai);
+        jsonObject.put("tanggalSelesai", tanggalSelesai);
+        jsonObject.put("tujuan", tujuan);
+        jsonObject.put("jumlahPeserta", jumlahPeserta);
+        jsonObject.put("keterangan", keterangan);
+        jsonObject.put("nomorSurat", nomorSurat);
+        jsonObject.put("uuid_user_peminjam", uuid_user_peminjam);
+        return jsonObject;
     }
 }
