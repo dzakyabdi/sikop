@@ -21,10 +21,16 @@ public class RoleModel implements Serializable {
     @Column(name = "nama", nullable = false)
     private String nama;
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private List<UserModel> user;
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<UserModel> listUser;
+
+    public List<UserModel> getListUser() {
+        return listUser;
+    }
+
+    public void setListUser(List<UserModel> listUser) {
+        this.listUser = listUser;
+    }
 
     public Long getId() {
         return id;
@@ -42,11 +48,4 @@ public class RoleModel implements Serializable {
         this.nama = nama;
     }
 
-    public List<UserModel> getUser() {
-        return user;
-    }
-
-    public void setUser(List<UserModel> user) {
-        this.user = user;
-    }
 }

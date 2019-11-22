@@ -52,7 +52,7 @@ public class AnggotaModel implements Serializable {
     private boolean is_pengurus;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "uuid_user", referencedColumnName = "uuid")
+    @JoinColumn(name = "uuid_user", referencedColumnName = "id", nullable = false)
     private UserModel user;
 
     @OneToMany(mappedBy = "anggota", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -136,7 +136,7 @@ public class AnggotaModel implements Serializable {
         this.nomor_telepon = nomor_telepon;
     }
 
-    public boolean isIs_pengurus() {
+    public boolean getIs_pengurus() {
         return is_pengurus;
     }
 
@@ -144,7 +144,31 @@ public class AnggotaModel implements Serializable {
         this.is_pengurus = is_pengurus;
     }
 
-//	public List<PinjamanModel> getListPinjaman() {
+    public List<PinjamanModel> getListPinjaman() {
+        return listPinjaman;
+    }
+
+    public void setListPinjaman(List<PinjamanModel> listPinjaman) {
+        this.listPinjaman = listPinjaman;
+    }
+
+    public List<SimpananModel> getListSimpananPenyetor() {
+        return listSimpananPenyetor;
+    }
+
+    public void setListSimpananPenyetor(List<SimpananModel> listSimpananPenyetor) {
+        this.listSimpananPenyetor = listSimpananPenyetor;
+    }
+
+    public List<SimpananModel> getListSimpananPenerima() {
+        return listSimpananPenerima;
+    }
+
+    public void setListSimpananPenerima(List<SimpananModel> listSimpananPenerima) {
+        this.listSimpananPenerima = listSimpananPenerima;
+    }
+
+    //	public List<PinjamanModel> getListPinjaman() {
 //		return listPinjaman;
 //	}
 //
