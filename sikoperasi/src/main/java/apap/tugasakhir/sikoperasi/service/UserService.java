@@ -3,6 +3,7 @@ package apap.tugasakhir.sikoperasi.service;
 import apap.tugasakhir.sikoperasi.model.UserModel;
 
 public interface UserService {
+    UserModel getUserById(String id);
     UserModel addUser(UserModel user);
     public String encrypt(String password);
     UserModel getUser();
