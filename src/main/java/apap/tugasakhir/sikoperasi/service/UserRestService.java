@@ -4,8 +4,10 @@ import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.UserModel;
 import apap.tugasakhir.sikoperasi.rest.GuruDetail;
 import apap.tugasakhir.sikoperasi.rest.PegawaiDetail;
+import apap.tugasakhir.sikoperasi.rest.ResponseDetail;
 import apap.tugasakhir.sikoperasi.rest.SiswaDetail;
 import reactor.core.publisher.Mono;
+import java.util.Map;
 
 public interface UserRestService {
     Mono<PegawaiDetail> postUser(PegawaiDetail user);
@@ -17,4 +19,7 @@ public interface UserRestService {
     PegawaiDetail postUserPegawaiToSiSivitas(PegawaiDetail pegawai);
     GuruDetail postUserGuruToSiSivitas(GuruDetail guru);
     SiswaDetail postUserSiswaToSiSivitas(SiswaDetail siswa);
+
+    public Mono<ResponseDetail> getEmployee(String id);
+    public Mono<ResponseDetail> getTeacher(String id);
 }

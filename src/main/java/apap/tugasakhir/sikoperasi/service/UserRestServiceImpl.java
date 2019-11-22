@@ -3,10 +3,7 @@ package apap.tugasakhir.sikoperasi.service;
 import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.UserModel;
 import apap.tugasakhir.sikoperasi.repository.UserDB;
-import apap.tugasakhir.sikoperasi.rest.GuruDetail;
-import apap.tugasakhir.sikoperasi.rest.Setting;
-import apap.tugasakhir.sikoperasi.rest.PegawaiDetail;
-import apap.tugasakhir.sikoperasi.rest.SiswaDetail;
+import apap.tugasakhir.sikoperasi.rest.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -141,4 +138,15 @@ public class UserRestServiceImpl implements UserRestService{
 
         return nomorInduk;
     }
+
+    @Override
+    public Mono<ResponseDetail> getEmployee(String id){
+        return this.webClient.get().uri("/employees/" + id).retrieve().bodyToMono(ResponseDetail.class);
+    }
+
+    @Override
+    public Mono<ResponseDetail> getTeacher(String id){
+        return this.webClient.get().uri("/teachers/" + id).retrieve().bodyToMono(ResponseDetail.class);
+    }
+
 }

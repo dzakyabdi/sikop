@@ -16,6 +16,11 @@ public class SimpananServiceImpl implements SimpananService {
     private SimpananDB simpananDB;
 
     @Override
+    public void addSimpanan(SimpananModel simpanan) {
+        simpananDB.save(simpanan);
+    }
+
+    @Override
     public List<SimpananModel> getAllSimpananByAnggota(AnggotaModel anggota) {
         List<SimpananModel> listSimpanan = simpananDB.findAllByAnggotaPenyetor(anggota);
         return listSimpanan;
