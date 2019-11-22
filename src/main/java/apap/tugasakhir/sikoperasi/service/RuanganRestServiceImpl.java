@@ -10,6 +10,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,41 +26,45 @@ public class RuanganRestServiceImpl implements RuanganRestService {
     }
 
     @Override
-    public PeminjamanDetail postPeminjamanRuang(JSONObject jsonObject) {
+    public Mono<PeminjamanDetail> postPeminjamanRuang(JSONObject jsonObject) {
         String jsonReqBody = jsonObject.toString();
         System.out.println(jsonReqBody);
 
         return this.webClient.post()
-                .uri("/ruang/peminjaman")
+                .uri("/ruangan/peminjaman/tambah")
+                .contentType(MediaType.APPLICATION_JSON)
                 .syncBody(jsonReqBody)
                 .retrieve()
-                .bodyToMono(PeminjamanDetail.class).block();
+                .bodyToMono(PeminjamanDetail.class);
     }
 
     @Override
-    public JSONObject convertToJSONObject(PeminjamanDetail peminjamanDetail) {
+    public JSONObject convertToJSONObject(PeminjamanDetail peminjamanDetail, RuanganDetail ruanganDetail) {
+        JSONObject jsonObjectRuangan = new JSONObject();
+        jsonObjectRuangan.put("id", peminjamanDetail.getRuangan().getId());
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("idRuang", peminjamanDetail.getIdRuang());
+        jsonObject.put("ruangan", jsonObjectRuangan);
         jsonObject.put("waktuMulai", peminjamanDetail.getWaktuMulai());
         jsonObject.put("waktuSelesai", peminjamanDetail.getWaktuSelesai());
-        jsonObject.put("tanggalMulai", peminjamanDetail.getTanggalMulai());
-        jsonObject.put("tanggalSelesai", peminjamanDetail.getTanggalSelesai());
+        jsonObject.put("tanggalMulai", peminjamanDetail.getTanggalMulai().toString());
+        jsonObject.put("tanggalSelesai", peminjamanDetail.getTanggalSelesai().toString());
         jsonObject.put("tujuan", peminjamanDetail.getTujuan());
         jsonObject.put("jumlahPeserta", peminjamanDetail.getJumlahPeserta());
         jsonObject.put("keterangan", peminjamanDetail.getKeterangan());
-        jsonObject.put("nomorSurat", peminjamanDetail.getNomorSurat());
-        jsonObject.put("uuid_user_peminjam", peminjamanDetail.getUuidUserPeminjam());
+//        jsonObject.put("nomorSurat", peminjamanDetail.getNomorSurat());
+//        jsonObject.put("uuid_user_peminjam", peminjamanDetail.getUuidUserPeminjam());
         return jsonObject;
     }
 
     @Override
-    public Mono<List<RuanganDetail>> getListRuangan() {
-        return this.webClient.get()
-                .uri("/ruangan/")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToFlux(RuanganDetail.class)
-                .collectList()
-                .log();
+    public List<RuanganDetail> getListRuangan() {
+        List<RuanganDetail> listRuanganDetail = this.webClient.get()
+                                                    .uri("/ruangan/")
+                                                    .retrieve()
+                                                    .bodyToFlux(RuanganDetail.class)
+                                                    .collectList()
+                                                    .block();
+        return listRuanganDetail;
     }
+
 }

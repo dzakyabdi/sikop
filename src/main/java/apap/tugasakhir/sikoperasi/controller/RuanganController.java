@@ -23,43 +23,25 @@ public class RuanganController {
     private RuanganRestService ruanganRestService;
 
     @RequestMapping(value = "/peminjaman", method = RequestMethod.GET)
-    public String addPeminjamanRuangForm() {
+    public String addPeminjamanRuangForm(Model model) {
+        model.addAttribute("listRuangan", ruanganRestService.getListRuangan());
         return "form-add-peminjaman-ruang";
     }
 
-    @RequestMapping(value = "/tambah", method = RequestMethod.POST)
+    @RequestMapping(value = "/peminjaman", method = RequestMethod.POST)
     public String addPeminjamanRuangSumbit(
             @ModelAttribute PeminjamanDetail peminjamanDetail,
-            Model model,
-            HttpServletRequest req
+            @ModelAttribute RuanganDetail ruanganDetail,
+            Model model
     ) {
-//        String idRuang = req.getParameter("idRuang");
-//        String waktuMulai = req.getParameter("waktuMulai");
-//        String waktuSelesai = req.getParameter("waktuSelesai");
-//        String tanggalMulai = req.getParameter("tanggalMulai");
-//        String tanggalSelesai = req.getParameter("tanggalSelesai");
-//        String tujuan = req.getParameter("tujuan");
-//        String jumlahPeserta = req.getParameter("jumlahPeserta");
-//        String keterangan = req.getParameter("keterangan");
-//        String nomorSurat = req.getParameter("nomorSurat");
-//        String uuid_user_peminjam = req.getParameter("uuid_user_peminjam");
+        peminjamanDetail.setRuangan(ruanganDetail);
+        JSONObject jsonObject = ruanganRestService.convertToJSONObject(peminjamanDetail, ruanganDetail);
 
-//        JSONObject jsonObject = ruanganRestService.convertToJSONObject( idRuang, waktuMulai, waktuSelesai, tanggalMulai,
-//                                                                        tanggalSelesai, tujuan, jumlahPeserta, keterangan,
-//                                                                        nomorSurat, uuid_user_peminjam);
-
-        JSONObject jsonObject = ruanganRestService.convertToJSONObject(peminjamanDetail);
-
-        ruanganRestService.postPeminjamanRuang(jsonObject);
+        ruanganRestService.postPeminjamanRuang(jsonObject).block();
 
         return "action-success";
     }
 
-    @RequestMapping(value = "/listRuangan",  method = RequestMethod.GET)
-    public Mono<List<RuanganDetail>> getListRuangan(
-    ) {
-        return ruanganRestService.getListRuangan();
-    }
 
 
 

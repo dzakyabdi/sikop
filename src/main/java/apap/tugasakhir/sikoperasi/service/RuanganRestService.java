@@ -5,11 +5,13 @@ import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
 import org.json.JSONObject;
 import reactor.core.publisher.Mono;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 public interface RuanganRestService {
-    PeminjamanDetail postPeminjamanRuang(JSONObject jsonObject);
+    Mono<PeminjamanDetail> postPeminjamanRuang(JSONObject jsonObject);
 //    JSONObject convertToJSONObject(String idRuang,
 //                                   String waktuMulai,
 //                                   String waktuSelesai,
@@ -20,6 +22,6 @@ public interface RuanganRestService {
 //                                   String keterangan,
 //                                   String nomorSurat,
 //                                   String uuid_user_peminjam);
-    JSONObject convertToJSONObject(PeminjamanDetail peminjamanDetail);
-    public Mono<List<RuanganDetail>> getListRuangan();
+    JSONObject convertToJSONObject(PeminjamanDetail peminjamanDetail, RuanganDetail ruanganDetail);
+    List<RuanganDetail> getListRuangan();
 }

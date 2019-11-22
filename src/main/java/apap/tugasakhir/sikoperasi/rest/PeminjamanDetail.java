@@ -2,13 +2,17 @@ package apap.tugasakhir.sikoperasi.rest;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PeminjamanDetail {
 
-    @JsonProperty("idRuang")
-    private Integer idRuang;
+//    @JsonProperty("idRuang")
+//    private Integer idRuang;
+
+    @JsonProperty("ruangan")
+    private RuanganDetail ruangan;
 
     @JsonProperty("waktuMulai")
     private String waktuMulai;
@@ -16,11 +20,13 @@ public class PeminjamanDetail {
     @JsonProperty("waktuSelesai")
     private String waktuSelesai;
 
-    @JsonProperty("tanngalMulai")
-    private Date tanggalMulai;
+    @JsonProperty("tanggalMulai")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private String tanggalMulai;
 
-    @JsonProperty("tanngalSelesai")
-    private Date tanggalSelesai;
+    @JsonProperty("tanggalSelesai")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private String tanggalSelesai;
 
     @JsonProperty("tujuan")
     private String  tujuan;
@@ -31,18 +37,27 @@ public class PeminjamanDetail {
     @JsonProperty("keterangan")
     private String keterangan;
 
-    @JsonProperty("nomorSurat")
-    private Integer nomorSurat;
+//    @JsonProperty("nomorSurat")
+//    private Integer nomorSurat;
 
-    @JsonProperty("uuid_user_peminjam")
-    private String uuidUserPeminjam;
+//    @JsonProperty("uuid_user_peminjam")
+//    private String uuidUserPeminjam;
 
-    public Integer getIdRuang() {
-        return idRuang;
+//    public Integer getIdRuang() {
+//        return idRuang;
+//    }
+//
+//    public void setIdRuang(Integer idRuang) {
+//        this.idRuang = idRuang;
+//    }
+
+
+    public RuanganDetail getRuangan() {
+        return ruangan;
     }
 
-    public void setIdRuang(Integer idRuang) {
-        this.idRuang = idRuang;
+    public void setRuangan(RuanganDetail ruangan) {
+        this.ruangan = ruangan;
     }
 
     public String getWaktuMulai() {
@@ -61,21 +76,37 @@ public class PeminjamanDetail {
         this.waktuSelesai = waktuSelesai;
     }
 
-    public Date getTanggalMulai() {
+    public String getTanggalMulai() {
         return tanggalMulai;
     }
 
-    public void setTanggalMulai(Date tanggalMulai) {
+    public void setTanggalMulai(String tanggalMulai) {
         this.tanggalMulai = tanggalMulai;
     }
 
-    public Date getTanggalSelesai() {
+    public String getTanggalSelesai() {
         return tanggalSelesai;
     }
 
-    public void setTanggalSelesai(Date tanggalSelesai) {
+    public void setTanggalSelesai(String tanggalSelesai) {
         this.tanggalSelesai = tanggalSelesai;
     }
+
+    //    public Date getTanggalMulai() {
+//        return tanggalMulai;
+//    }
+//
+//    public void setTanggalMulai(Date tanggalMulai) {
+//        this.tanggalMulai = tanggalMulai;
+//    }
+//
+//    public Date getTanggalSelesai() {
+//        return tanggalSelesai;
+//    }
+//
+//    public void setTanggalSelesai(Date tanggalSelesai) {
+//        this.tanggalSelesai = tanggalSelesai;
+//    }
 
     public String getTujuan() {
         return tujuan;
@@ -101,19 +132,19 @@ public class PeminjamanDetail {
         this.keterangan = keterangan;
     }
 
-    public Integer getNomorSurat() {
-        return nomorSurat;
-    }
-
-    public void setNomorSurat(Integer nomorSurat) {
-        this.nomorSurat = nomorSurat;
-    }
-
-    public String getUuidUserPeminjam() {
-        return uuidUserPeminjam;
-    }
-
-    public void setUuidUserPeminjam(String uuidUserPeminjam) {
-        this.uuidUserPeminjam = uuidUserPeminjam;
-    }
+//    public Integer getNomorSurat() {
+//        return nomorSurat;
+//    }
+//
+//    public void setNomorSurat(Integer nomorSurat) {
+//        this.nomorSurat = nomorSurat;
+//    }
+//
+//    public String getUuidUserPeminjam() {
+//        return uuidUserPeminjam;
+//    }
+//
+//    public void setUuidUserPeminjam(String uuidUserPeminjam) {
+//        this.uuidUserPeminjam = uuidUserPeminjam;
+//    }
 }

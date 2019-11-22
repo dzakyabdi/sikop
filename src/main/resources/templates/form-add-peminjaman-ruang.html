@@ -11,12 +11,19 @@
 
 <div class="container" style="margin-top:120px">
     <h2>Peminjaman Ruangan</h2>
-    <form class="form-horizontal" th:action="@{/ruangan/peminjaman}">
-        <div class="form-group row">
-            <label class="control-label col-sm-2">Nomor Ruang</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="idRuang">
-            </div>
+    <form class="form-horizontal" th:action="@{/ruangan/peminjaman}" method="post">
+<!--        <div class="form-group row">-->
+<!--            <label class="control-label col-sm-2">Ruangan</label>-->
+<!--            <div class="col-sm-10">-->
+<!--                <input type="text" class="form-control" name="idRuang">-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="form-group">
+            <label class="control-label col-sm-2">Ruangan</label>
+            <select class="form-control" name="id">
+                <option value="" selected hidden>-- Pilih Ruangan --</option>
+                <option th:each="ruangan, i : ${listRuangan}" th:value="${ruangan.id}" th:text="${listRuangan[__${i.index}__].id}"></option>
+            </select>
         </div>
         <div class="form-group row">
             <label class="control-label col-sm-2">Waktu Mulai</label>
@@ -60,12 +67,12 @@
                 <input type="text" class="form-control" name="keterangan">
             </div>
         </div>
-        <div class="form-group row">
-            <label class="control-label col-sm-2">Nomor Surat</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="nomorSurat">
-            </div>
-        </div>
+<!--        <div class="form-group row">-->
+<!--            <label class="control-label col-sm-2">Nomor Surat</label>-->
+<!--            <div class="col-sm-10">-->
+<!--                <input type="text" class="form-control" name="nomorSurat">-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-dark" name="submit">Submit</button>
