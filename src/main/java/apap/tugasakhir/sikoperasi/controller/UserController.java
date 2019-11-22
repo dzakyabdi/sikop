@@ -60,7 +60,7 @@ public class UserController {
                     || user.getRole().getNama().equals("Anggota Koperasi")) {
                 userRestService.postUserPegawaiToSiSivitas(userRestService.postPegawaiDetail(user, anggota));
             }
-            
+
             userRestService.postUserSiswaToSiSivitas(userRestService.postSiswaDetail(user, anggota));
             return "redirect:/";
         }
