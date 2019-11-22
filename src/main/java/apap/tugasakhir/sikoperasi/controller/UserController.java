@@ -52,8 +52,15 @@ public class UserController {
 
 
 //            userService.addUser(user);
-            if(user.getRole().getNama().equals("Kepala Sekolah") || user.getRole().getNama().equals("Guru")) userRestService.postUserGuruToSiSivitas(userRestService.postGuruDetail(user, anggota));
-            else if (user.getRole().getNama().equals("Admin TU") || user.getRole().getNama().equals("Pustakawan") || user.getRole().getNama().equals("Pengurus Koperasi") || user.getRole().getNama().equals("Anggota Koperasi")) userRestService.postUserPegawaiToSiSivitas(userRestService.postPegawaiDetail(user, anggota));
+            if(user.getRole().getNama().equals("Kepala Sekolah") || user.getRole().getNama().equals("Guru")) {
+                userRestService.postUserGuruToSiSivitas(userRestService.postGuruDetail(user, anggota));
+            }
+            else if (user.getRole().getNama().equals("Admin TU") || user.getRole().getNama().equals("Pustakawan")
+                    || user.getRole().getNama().equals("Pengurus Koperasi")
+                    || user.getRole().getNama().equals("Anggota Koperasi")) {
+                userRestService.postUserPegawaiToSiSivitas(userRestService.postPegawaiDetail(user, anggota));
+            }
+            
             userRestService.postUserSiswaToSiSivitas(userRestService.postSiswaDetail(user, anggota));
             return "redirect:/";
         }

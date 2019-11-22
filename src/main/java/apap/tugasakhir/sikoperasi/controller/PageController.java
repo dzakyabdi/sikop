@@ -26,6 +26,16 @@ public class PageController {
         return "homepage";
     }
 
+    @RequestMapping("/home")
+    public String homepage(Model model) {
+        model.addAttribute("listRole", roleService.findAll());
+        Authentication rawDataUser = SecurityContextHolder.getContext().getAuthentication();
+        if(rawDataUser.getAuthorities().toString().contains("ADMIN")){
+            model.addAttribute("admin", "true");
+        }
+        return "home";
+    }
+
     @RequestMapping("/login")
     public String login() {
         return "login";
