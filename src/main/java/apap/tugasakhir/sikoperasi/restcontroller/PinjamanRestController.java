@@ -1,5 +1,7 @@
 package apap.tugasakhir.sikoperasi.restcontroller;
 
+import java.util.NoSuchElementException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +38,18 @@ public class PinjamanRestController {
 			PinjamanModel newPinjaman = new PinjamanModel();
 			newPinjaman.setStatus(0);
 			newPinjaman.setJumlahPengembalian(0);
-			AnggotaModel anggota = anggotaService.getAnggotaById(Long.valueOf(pinjaman.getIdAnggota()));
-			if (anggota == null) {
-				throw new ResponseStatusException(
-						HttpStatus.NOT_FOUND, "Anggota with ID " + pinjaman.getIdAnggota() + " not found!");
-			} else {
+			newPinjaman.setJumlahPinjaman(pinjaman.getJumlahPinjaman());
+			newPinjaman.setTanggalPengajuan(pinjaman.getTanggalPengajuan());
+			try{
+				AnggotaModel anggota = anggotaService.getAnggotaById(Long.valueOf(pinjaman.getIdAnggota()));
 				newPinjaman.setAnggota(anggota);
 				pinjamanService.addPinjaman(newPinjaman);
 				return pinjaman;
+			} catch (NoSuchElementException e) {
+				throw new ResponseStatusException(
+						HttpStatus.NOT_FOUND, "Anggota with ID " + pinjaman.getIdAnggota() + " not found!");
 			}
-		}
+		}		
 	}
 	
 }
