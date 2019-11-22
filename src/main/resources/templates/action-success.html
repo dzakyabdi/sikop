@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeLeaf.org">
+<head>
+    <title>Home</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<h2 style="text-align: center; margin-top:120px">Alhamdulillah Berhasil</h2>
+<center>
+    <a th:href="@{/}" class="btn btn-sm btn-primary" style="">Home</a>
+</center>
+</body>
+
+</html>
