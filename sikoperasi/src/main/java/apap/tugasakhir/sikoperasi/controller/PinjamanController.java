@@ -46,7 +46,7 @@ public class PinjamanController {
         return "detail-pinjaman";
     }
     
-    @RequestMapping(value="pinjaman/ajukan", method = RequestMethod.GET)
+    @RequestMapping(value="/pinjaman/ajukan", method = RequestMethod.GET)
     public String addPinjaman(Model model) {
     	PinjamanModel newPinjaman = new PinjamanModel();
     	List<AnggotaModel> listAnggota = anggotaService.getAllAnggota();
@@ -55,7 +55,7 @@ public class PinjamanController {
     	return "form-ajukan-pinjaman";
     }
     
-    @RequestMapping(value="pinjaman/ajukan", method = RequestMethod.POST)
+    @RequestMapping(value="/pinjaman/ajukan", method = RequestMethod.POST)
     public String submitAddPinjaman(
     		@RequestParam("idAnggota") Long idAnggota, @ModelAttribute PinjamanModel pinjaman, Model model) {
     	AnggotaModel anggota = anggotaService.getAnggotaById(idAnggota);

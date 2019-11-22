@@ -52,7 +52,7 @@ public class AnggotaModel implements Serializable {
     private boolean is_pengurus;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "uuid_user", referencedColumnName = "uuid")
+    @JoinColumn(name = "uuid_user", referencedColumnName = "id")
     private UserModel user;
 
     @OneToMany(mappedBy = "anggota", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

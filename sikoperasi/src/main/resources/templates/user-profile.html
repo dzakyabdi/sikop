@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-        <title>SI-KOPERASI</title>
+        <title>PROFILE</title>
       
         <object th:include="fragments/fragment :: css" th:remove="tag"></object>
         <object th:include="fragments/fragment :: js" th:remove="tag"></object>
@@ -11,47 +11,50 @@
         <nav th:replace="fragments/fragment :: navbar"></nav>
     </div>
     <div class="container main-cont">
+        <div class="row">
         <div class="col-sm-6">
+            <legend><center><h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); color: white;"><b>KOPERASI</b></h2></center></legend><br>
             <div class="row">
-                <label class="col-md-4 control-label" >Usernama</label>
-                <h5 th:text="${user.username}"></h5>
+                <label class="col-md-4 control-label" >Username</label>
+                <p>blabla</p>
+                <!-- <p th:text="${user.username}"></p> -->
             </div>
             <div class="row">
                     <label class="col-md-4 control-label" >Role</label>
-                    <h5 th:text="${user.role.getNama()}"></h5>
+                    <!-- <p th:text="${user.role.getNama()}"></p> -->
             </div>
         </div>
-        <div class="col-sm-6" th:if="{isSivitas}">
-            <div class="row">
-                <span th:if="{isPegawai}">
+        <div class="col-sm-6" th:if="${isSivitas}">
+            <legend><center><h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); color: white;"><b>SIVITAS</b></h2></center></legend><br>
+            <div class="row" th:if="${isPegawai}">
                     <label class="col-md-4 control-label" >NIP</label>
-                    <h5 th:text="${sivitas.get('result').get('nip')}"></h5>
-                </span>
-                <span th:unless="{isPegawai}">
-                    <label class="col-md-4 control-label" >NIG</label>
-                    <h5 th:text="${sivitas.nig}"></h5>
-                </span>
+                    <p th:text="${sivitas.nip}"></p>
+            </div>
+            <div class="row" th:unless="${isPegawai}">
+                <label class="col-md-4 control-label" >NIG</label>
+                <p th:text="${sivitas.nig}"></p>
             </div>
             <div class="row">
                     <label class="col-md-4 control-label" >Nama</label>
-                    <h5 th:text="${sivitas.get('result').get('nama')}"></h5>
+                    <p th:text="${sivitas.nama}"></p>
             </div>
             <div class="row">
                     <label class="col-md-4 control-label" >Tempat Lahir</label>
-                    <h5 th:text="${sivitas.get('result').get('tempatLahir')}"></h5>
+                    <p th:text="${sivitas.tempatLahir}"></p>
             </div>
             <div class="row">
                     <label class="col-md-4 control-label" >Tanggal Lahir</label>
-                    <h5 th:text="${sivitas.get('result').get('tanggalLahir')}"></h5>
+                    <p th:text="${sivitas.tanggalLahir}"></p>
             </div>
             <div class="row">
                     <label class="col-md-4 control-label">Alamat</label>
-                    <h5 th:text="${sivitas.get('result').get('alamat')}"></h5>
+                    <p th:text="${sivitas.alamat}"></p>
             </div>
             <div class="row">
                     <label class="col-md-4 control-label">Telepon</label>
-                    <h5 th:text="${sivitas.get('result').get('telepon')}"></h5>
+                    <p th:text="${sivitas.telepon}"></p>
             </div>
         </div>
+    </div>
     
 </body>
