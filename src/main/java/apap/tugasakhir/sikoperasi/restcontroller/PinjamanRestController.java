@@ -3,6 +3,7 @@ package apap.tugasakhir.sikoperasi.restcontroller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import apap.tugasakhir.sikoperasi.service.PinjamanService;
 
 @RestController
 public class PinjamanRestController {
+	@Qualifier("pinjamanServiceImpl")
 	@Autowired
 	private PinjamanService pinjamanService;
 	
