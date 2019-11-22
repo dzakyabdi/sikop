@@ -2,14 +2,13 @@ package apap.tugasakhir.sikoperasi.controller;
 
 import apap.tugasakhir.sikoperasi.model.PinjamanModel;
 import apap.tugasakhir.sikoperasi.service.PinjamanService;
+import org.hibernate.annotations.common.reflection.XMethod;
 import org.hibernate.tool.hbm2ddl.SchemaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,4 +45,21 @@ public class PinjamanController {
         model.addAttribute("pinjaman", existingPinjaman);
         return "detail-pinjaman";
     }
+
+    @RequestMapping(value = "pinjaman/ubah/{id}", method = RequestMethod.GET)
+    public String changePinjamanFormPage(@PathVariable Long id, Model model){
+        PinjamanModel existingPinjaman = pinjamanService.getPinjamanById(id).get();
+        model.addAttribute("pinjaman", existingPinjaman);
+        return "form-update-pinjaman";
+    }
+
+    @RequestMapping(value = "pinjaman/ubah/{id}", method = RequestMethod.POST)
+    public String changePinjamanSubmit(@PathVariable Long id, @ModelAttribute PinjamanModel
+                                        pinjaman, Model model){
+        PinjamanModel newPinjaman = pinjamanService.updatePinjaman(pinjaman);
+        model.addAttribute("pinjaman", newPinjaman);
+        return "updated-pinjaman";
+    }
+
+
 }
