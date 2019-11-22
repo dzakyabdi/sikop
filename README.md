@@ -34,8 +34,7 @@ NPM  | NAMA LENGKAP | FITUR YANG DISELESAIKAN
 
 NPM  | NAMA LENGKAP | FITUR YANG DISELESAIKAN
 ------------- | ------------- | -------------
-**1706984732** | **Siti Kaamiliaa Hasnaa**  |
-**1706043973** | **Mohammad Wildan Yanuar**  | 
-**1706043462** | **Dzaky Abdi Al Jabbar**  | **4**
-**1706984594** | **Fivi Melinda**  | 
-
+**1706984732** | **Siti Kaamiliaa Hasnaa**  | **10, 12**
+**1706043973** | **Mohammad Wildan Yanuar**  | **2,3,11**
+**1706043462** | **Dzaky Abdi Al Jabbar**  | **4, User Interface Design**
+**1706984594** | **Fivi Melinda**  | **6,7**
