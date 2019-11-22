@@ -35,20 +35,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-<<<<<<< HEAD:sikoperasi/src/main/java/apap/tugasakhir/sikoperasi/security/WebSecurityConfig.java
-=======
-    @Autowired
-    public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("admin").password(encoder().encode("admin123"))
-                .roles("Pengurus Koperasi");
-    }
-
-    @Autowired
-    private UserDetailsService userDetailsService;
-
->>>>>>> b3c2e8f97267bdc5f89e2275c790889753a00d33:src/main/java/apap/tugasakhir/sikoperasi/security/WebSecurityConfig.java
     @Autowired
     public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()

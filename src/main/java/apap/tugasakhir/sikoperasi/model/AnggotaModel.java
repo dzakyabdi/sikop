@@ -144,15 +144,6 @@ public class AnggotaModel implements Serializable {
         this.is_pengurus = is_pengurus;
     }
 
-<<<<<<< HEAD:sikoperasi/src/main/java/apap/tugasakhir/sikoperasi/model/AnggotaModel.java
-	public List<PinjamanModel> getListPinjaman() {
-		return listPinjaman;
-	}
-
-	public void setListPinjaman(List<PinjamanModel> listPinjaman) {
-		this.listPinjaman = listPinjaman;
-	}
-=======
     public List<PinjamanModel> getListPinjaman() {
         return listPinjaman;
     }
@@ -176,29 +167,4 @@ public class AnggotaModel implements Serializable {
     public void setListSimpananPenerima(List<SimpananModel> listSimpananPenerima) {
         this.listSimpananPenerima = listSimpananPenerima;
     }
-
-    //	public List<PinjamanModel> getListPinjaman() {
-//		return listPinjaman;
-//	}
-//
-//	public void setListPinjaman(List<PinjamanModel> listPinjaman) {
-//		this.listPinjaman = listPinjaman;
-//	}
->>>>>>> b3c2e8f97267bdc5f89e2275c790889753a00d33:src/main/java/apap/tugasakhir/sikoperasi/model/AnggotaModel.java
-//
-//    public List<SimpananModel> getListSimpananPenyetor() {
-//        return listSimpananPenyetor;
-//    }
-//
-//    public void setListSimpananPenyetor(List<SimpananModel> listSimpananPenyetor) {
-//        this.listSimpananPenyetor = listSimpananPenyetor;
-//    }
-//
-//    public List<SimpananModel> getListSimpananPenerima() {
-//        return listSimpananPenerima;
-//    }
-//
-//    public void setListSimpananPenerima(List<SimpananModel> listSimpananPenerima) {
-//        this.listSimpananPenerima = listSimpananPenerima;
-//    }
 }
