@@ -6,6 +6,8 @@ import apap.tugasakhir.sikoperasi.repository.AnggotaDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -30,10 +32,10 @@ public class AnggotaServiceImpl implements AnggotaService {
     public void addAnggota(AnggotaModel anggota) {
         anggotaDb.save(anggota);
     }
-
+    
     @Override
-    public List<AnggotaModel> getAllAnggota() {
-        return anggotaDb.findAll();
+    public List<AnggotaModel> getAllAnggota(){
+    	return anggotaDb.findAll();
     }
 
     //    @Override

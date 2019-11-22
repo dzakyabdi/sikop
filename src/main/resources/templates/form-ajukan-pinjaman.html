@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>SI-KOPERASI</title>
+
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container" style="margin-top: 100px;">
+        <div class="container-fluid col-sm-6 container-form" style= "margin-top: 20px; padding-bottom: 10px;" >
+                <h3>Tambah Pinjaman</h3>
+                <form th:action="@{/pinjaman/ajukan}" th:object="${pinjaman}" method="POST">
+                    <div class="form-row" style="margin-top: 10px; ">
+                        <label for="idAnggota" class="col-sm-5 col-form-label">Nama Anggota:</label>
+                        <div class="col-sm-7">
+                            <select name="idAnggota" class="form-control">
+                                <option th:each="anggota : ${allAnggota}" th:value="${anggota.id}" th:text="${anggota.nama}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-top: 10px; ">
+                        <label for="tanggalPengajuan" class="col-sm-5 col-form-label">Tanggal Pengajuan:</label>
+                        <div class="col-sm-7">
+                                <input class="form-control" type="date" th:field="${pinjaman.tanggalPengajuan}"/>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-top: 10px;">
+                        <label for="jumlahPinjaman" class="col-sm-5 col-form-label">Jumlah:</label>
+                        <div class="col-sm-7">
+                        <input class="form-control" type="number" th:field="${pinjaman.jumlahPinjaman}"/>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-top: 10px;">
+                        <div class="col-sm-5"></div>
+                        <div class="col-sm-4">
+                                <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+</div>
