@@ -18,11 +18,10 @@ import java.util.Random;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    @Qualifier("UserServiceImpl")
     private UserService userService;
 
+
     @Autowired
-    @Qualifier("UserRestServiceImpl")
     private UserRestService userRestService;
 
     @Autowired
@@ -35,6 +34,8 @@ public class UserController {
     ) {
         Boolean passwordChecker = userService.passwordRegexChecker(user.getPassword());
         if (passwordChecker) {
+
+            userService.addUser(user);
             String nia = "";
             Random random = new Random();
 
@@ -43,10 +44,15 @@ public class UserController {
                 nia += String.valueOf(x);
             }
             anggota.setNia(nia);
-
-            userRestService.postUserAnggotaToSiSivitas(userRestService.postUserDetail(user, anggota));
+            anggota.setKtp(anggota.getKtp());
+            anggota.setUser(user);
             anggotaService.addAnggota(anggota);
-            userService.addUser(user);
+
+
+//            userService.addUser(user);
+            if(user.getRole().getNama().equals("Kepala Sekolah") || user.getRole().getNama().equals("Guru")) userRestService.postUserGuruToSiSivitas(userRestService.postGuruDetail(user, anggota));
+            else if (user.getRole().getNama().equals("Admin TU") || user.getRole().getNama().equals("Pustakawan") || user.getRole().getNama().equals("Pengurus Koperasi") || user.getRole().getNama().equals("Anggota Koperasi")) userRestService.postUserPegawaiToSiSivitas(userRestService.postPegawaiDetail(user, anggota));
+            userRestService.postUserSiswaToSiSivitas(userRestService.postSiswaDetail(user, anggota));
             return "redirect:/";
         }
         String message = "Password harus terdiri dari setidaknya 1 huruf dan 1 angka dan terdiri dari setidaknya 8 karakter";

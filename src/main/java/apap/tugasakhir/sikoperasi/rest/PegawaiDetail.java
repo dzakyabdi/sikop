@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class UserDetail {
-    private String uuid;
+public class PegawaiDetail {
+    private String idUser;
 
     private String nip;
 
@@ -28,12 +28,12 @@ public class UserDetail {
         this.nama = nama;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getNip() {
