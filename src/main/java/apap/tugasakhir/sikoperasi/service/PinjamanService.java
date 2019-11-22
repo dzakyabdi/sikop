@@ -21,4 +21,6 @@ public interface PinjamanService {
 
     List<PinjamanModel> getAllPinjamanByStatus(int status);
 
+    PinjamanModel updatePinjaman(PinjamanModel newPinjaman);
+
 }
