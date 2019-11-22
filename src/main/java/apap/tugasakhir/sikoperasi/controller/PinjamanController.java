@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,5 +43,19 @@ public class PinjamanController {
         else if ( existingPinjaman.getStatus() == 5) { model.addAttribute("status", "Overdue"); }
         model.addAttribute("pinjaman", existingPinjaman);
         return "detail-pinjaman";
+    }
+
+    @RequestMapping(value = "pinjaman/ubah/{id}", method = RequestMethod.GET)
+    public String changePinjamanFormPage(@PathVariable Long id, Model model) {
+        PinjamanModel existingPinjaman = pinjamanService.getPinjamanById(id).get();
+        model.addAttribute("pinjaman", existingPinjaman);
+        return "form-change-pinjaman";
+    }
+
+    @RequestMapping(value = "pinjaman/ubah/{id}", method = RequestMethod.POST)
+    public String changePinjamanSubmit(@PathVariable Long id, @ModelAttribute PinjamanModel pinjaman, Model model) {
+        PinjamanModel newPinjaman = pinjamanService.updatePinjaman(pinjaman);
+        model.addAttribute("pinjaman", newPinjaman);
+        return "changed-pinjaman";
     }
 }

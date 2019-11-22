@@ -29,6 +29,12 @@
             <td><a th:text="${pinjaman.getTanggalPengajuan()}"></a></td>
             <td><a th:text="${pinjaman.getJumlahPinjaman()}"></a></td>
             <td><a th:text="${pinjaman.getJumlahPengembalian()}"></a></td>
+            <td>
+                <form th:action="@{/pinjaman/ubah/{id}(id=${pinjaman.id})}">
+                    <button class="btn btn-dark" type="submit">Ubah</button>
+                </form>
+                <br>
+            </td>
         </tr>
         </tbody>
     </table>
