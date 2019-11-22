@@ -37,6 +37,28 @@
                         <option th:each="roleAvailable : ${listRole}" th:value="${roleAvailable.id}" th:text="${roleAvailable.nama}"></option>
                     </select>
 
+                    <label> Nama </label>
+                    <input type="text" name="nama" class="form-control"/>
+
+                    <label> Tempat Lahir </label>
+                    <input type="text" name="tempat_lahir" class="form-control"/>
+
+                    <label> Tanggal Lahir </label>
+                    <input type="date" name="tanggal_lahir" class="form-control"/>
+
+                    <label> Alamat </label>
+                    <input type="text" name="alamat" class="form-control"/>
+
+                    <label> Telepon </label>
+                    <input type="text" name="nomor_telepon" class="form-control"/>
+
+                    <label>Pengurus</label>
+                    <select name="is_pengurus">
+                    <option th:value="null">-- Pilih Pengurus --</option>
+                    <option th:value="true">Ya</option>
+                    <option th:value="false">Tidak</option>
+                    </select>
+
                     <br>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

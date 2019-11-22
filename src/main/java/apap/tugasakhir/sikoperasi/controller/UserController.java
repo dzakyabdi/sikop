@@ -1,26 +1,51 @@
 package apap.tugasakhir.sikoperasi.controller;
 
+import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.UserModel;
+import apap.tugasakhir.sikoperasi.service.AnggotaService;
+import apap.tugasakhir.sikoperasi.service.UserRestService;
 import apap.tugasakhir.sikoperasi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Random;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
     @Autowired
+    @Qualifier("UserServiceImpl")
     private UserService userService;
+
+    @Autowired
+    @Qualifier("UserRestServiceImpl")
+    private UserRestService userRestService;
+
+    @Autowired
+    private AnggotaService anggotaService;
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     private String addUserSumbit(
             RedirectAttributes attributes,
-            @ModelAttribute UserModel user
+            @ModelAttribute UserModel user, AnggotaModel anggota
     ) {
         Boolean passwordChecker = userService.passwordRegexChecker(user.getPassword());
         if (passwordChecker) {
+            String nia = "";
+            Random random = new Random();
+
+            for(int i = 0; i < 8; i++) {
+                int x = random.nextInt(10);
+                nia += String.valueOf(x);
+            }
+            anggota.setNia(nia);
+
+            userRestService.postUserAnggotaToSiSivitas(userRestService.postUserDetail(user, anggota));
+            anggotaService.addAnggota(anggota);
             userService.addUser(user);
             return "redirect:/";
         }
