@@ -54,11 +54,13 @@ public class UserController {
 //            userService.addUser(user);
             if(user.getRole().getNama().equals("Kepala Sekolah") || user.getRole().getNama().equals("Guru")) {
                 userRestService.postUserGuruToSiSivitas(userRestService.postGuruDetail(user, anggota));
+                return "redirect:/";
             }
             else if (user.getRole().getNama().equals("Admin TU") || user.getRole().getNama().equals("Pustakawan")
                     || user.getRole().getNama().equals("Pengurus Koperasi")
                     || user.getRole().getNama().equals("Anggota Koperasi")) {
                 userRestService.postUserPegawaiToSiSivitas(userRestService.postPegawaiDetail(user, anggota));
+                return "redirect:/";
             }
 
             userRestService.postUserSiswaToSiSivitas(userRestService.postSiswaDetail(user, anggota));
