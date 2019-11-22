@@ -1,5 +1,6 @@
 package apap.tugasakhir.sikoperasi.service;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -8,6 +9,7 @@ import apap.tugasakhir.sikoperasi.model.PinjamanModel;
 import apap.tugasakhir.sikoperasi.repository.PinjamanDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import apap.tugasakhir.sikoperasi.service.PinjamanService;
 
 import javax.transaction.Transactional;
 
@@ -84,7 +86,8 @@ public class PinjamanServiceImpl implements PinjamanService{
         }if (newPinjaman.getJumlahPengembalian() >= targetPinjaman.getJumlahPinjaman()){
             targetPinjaman.setStatus(2);
         }
-
+        pinjamanDb.save(targetPinjaman);
         return targetPinjaman;
+
     }
 }

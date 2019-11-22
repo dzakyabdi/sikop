@@ -21,5 +21,6 @@ public interface PinjamanService {
 
     List<PinjamanModel> getAllPinjamanByStatus(int status);
 
-    PinjamanModel updatePinjaman(PinjamanModel pinjaman);
+    PinjamanModel updatePinjaman(PinjamanModel newPinjaman);
+
 }

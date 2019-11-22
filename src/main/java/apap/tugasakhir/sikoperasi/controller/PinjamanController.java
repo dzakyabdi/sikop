@@ -2,6 +2,7 @@ package apap.tugasakhir.sikoperasi.controller;
 
 import apap.tugasakhir.sikoperasi.model.PinjamanModel;
 import apap.tugasakhir.sikoperasi.service.PinjamanService;
+import org.hibernate.annotations.common.reflection.XMethod;
 import org.hibernate.tool.hbm2ddl.SchemaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -58,4 +59,5 @@ public class PinjamanController {
         model.addAttribute("pinjaman", newPinjaman);
         return "changed-pinjaman";
     }
+
 }
