@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div style="margin-top: 250px;">
+    <h2 th:text="'Pinjaman berhasil diubah'"></h2>
+    <br>
+    <a th:href="@{/}">Kembali ke Halaman Utama</a>
+</div>
+
+</body>
+</html>
