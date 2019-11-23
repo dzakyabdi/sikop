@@ -5,6 +5,8 @@
 * **Dzaky Abdi Al Jabbar** - *1706043462* - *C*
 * **Fivi Melinda** - *1706984594* - *C*
 ## **Asisten Dosen : Hanifa Arrumaisha**
+## **Link Heroku : https://koperasi-smart.herokuapp.com/**
+
 
 ---
 
