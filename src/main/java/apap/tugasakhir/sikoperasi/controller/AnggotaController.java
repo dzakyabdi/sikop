@@ -3,7 +3,6 @@ package apap.tugasakhir.sikoperasi.controller;
 import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.service.AnggotaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -48,5 +47,20 @@ public class AnggotaController {
 
         model.addAttribute("anggota", anggota);
         return "tambah-anggota";
+    }
+    
+    @RequestMapping(value ="/anggota/ubah-status", method = RequestMethod.GET)
+    public String ubahStatus(@RequestParam("id") Long id, Model model) {
+    	AnggotaModel anggota= anggotaService.getAnggotaById(id);
+    	model.addAttribute("anggota", anggota);
+    	return "ubah-status-anggota";
+    }
+    
+    @RequestMapping(value ="/anggota/ubah-status", method = RequestMethod.POST)
+    public String ubahStatusSubmit(@RequestParam("id") Long id, @ModelAttribute AnggotaModel anggota, Model model) {
+    	AnggotaModel target = anggotaService.getAnggotaById(id);
+    	target.setIs_pengurus(anggota.getIs_pengurus());
+    	anggotaService.addAnggota(target);
+    	return "homepage";
     }
 }

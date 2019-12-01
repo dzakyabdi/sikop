@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+	<title>Pinjaman</title>
+  
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+		<div>
+			<nav th:replace="fragments/fragment :: navbar"></nav>
+		</div>
+		<div class="col-sm-3"></div>
+		<div class="container-fluid col-sm-6 main-cont">
+			<h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); margin-top: 10px; margin-bottom: 10px; padding: 10px; color: white;">Ubah Status Anggota</h2>
+			<form th:action="@{/anggota/ubah-status?id={id}(id=${anggota.id})}" th:object="${anggota}" method="POST">
+			<div class="row">
+				<div class="col-sm-5">NIA</div>
+				<div class="col-sm-7">
+					<p th:text="${anggota.nia}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-5">Nama Anggota</div>
+				<div class="col-sm-7">
+					<p th:text="${anggota.nama}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-5">Status Keanggotaan</div>
+				    <label class="radio-inline">
+				      <input type="radio" name="optradio" th:field="${anggota.is_pengurus}" th:value="true">Pengurus
+				    </label>
+				    <label class="radio-inline">
+				      <input type="radio" name="optradio" th:field="${anggota.is_pengurus}" th:value="false">Non-Pengurus
+				    </label>
+			</div>
+			<div class="form-row" style="margin-top: 10px;">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-4">
+                	<button type="submit" class="btn btn-danger">Submit</button>
+                </div>
+          	</div>
+            </form>
+		</div>	
+		<div class="col-sm-3"></div>
+	</body>
+</html>
