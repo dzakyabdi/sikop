@@ -27,19 +27,19 @@ public class SimpananModel implements Serializable {
     private Integer jumlah;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "idJenisSimpanan", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_jenis_simpanan", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private JenisSimpananModel jenisSimpanan;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "idAnggotaPenyetor", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_anggota_penyetor", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private AnggotaModel anggotaPenyetor;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "idAnggotaPenerima", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_anggota_penerima", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private AnggotaModel anggotaPenerima;
