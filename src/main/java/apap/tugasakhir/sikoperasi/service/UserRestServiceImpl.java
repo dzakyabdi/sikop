@@ -4,7 +4,6 @@ import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.UserModel;
 import apap.tugasakhir.sikoperasi.repository.UserDB;
 import apap.tugasakhir.sikoperasi.rest.*;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -34,7 +33,6 @@ public class UserRestServiceImpl implements UserRestService{
 
     @Override
     public PegawaiDetail postUserPegawaiToSiSivitas(PegawaiDetail pegawai) {
-        System.out.println(pegawai);
         return this.webClient
                 .post()
                 .uri("/employees")
