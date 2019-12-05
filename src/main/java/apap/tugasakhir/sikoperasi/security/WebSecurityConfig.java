@@ -20,15 +20,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/restoran/**").hasAnyAuthority("MERCHANT")
-                .antMatchers("/user/addUser").hasAnyAuthority("ADMIN")
+                .antMatchers("/home").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/pinjaman/").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/pinjaman/").hasAuthority("Anggota Koperasi")
+                .antMatchers("/pinjaman/ubah/").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/simpanan/tambah/").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/pinjaman/ajukan/").hasAuthority("Anggota Koperasi")
+                .antMatchers("/laporan-keuangan").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/laporan-keuangan").hasAuthority("Anggota Koperasi")
+                .antMatchers("/peminjaman").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/api/").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
                 .and().csrf().disable();
     }
+
 
     @Bean
     public BCryptPasswordEncoder encoder() {

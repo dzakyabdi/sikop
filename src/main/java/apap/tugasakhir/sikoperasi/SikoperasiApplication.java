@@ -8,6 +8,5 @@ public class SikoperasiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SikoperasiApplication.class, args);
-	}
-
+	} 
 }
