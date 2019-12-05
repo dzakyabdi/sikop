@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/home").hasAuthority("Pengurus Koperasi")
+//                 .antMatchers("/home").hasAuthority("Pengurus Koperasi")
                 .antMatchers("/pinjaman/").hasAuthority("Pengurus Koperasi")
                 .antMatchers("/pinjaman/").hasAuthority("Anggota Koperasi")
                 .antMatchers("/pinjaman/ubah/").hasAuthority("Pengurus Koperasi")
