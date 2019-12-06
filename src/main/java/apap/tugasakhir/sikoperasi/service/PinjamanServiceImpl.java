@@ -90,8 +90,8 @@ public class PinjamanServiceImpl implements PinjamanService{
 
         }if (newPinjaman.getJumlahPengembalian() >= targetPinjaman.getJumlahPinjaman()){
             targetPinjaman.setStatus(2);
-        }if(newPinjaman.getJumlahPengembalian() <= targetPinjaman.getJumlahPinjaman() && newPinjaman.getStatus() == 3){
-            targetPinjaman.setStatus(2);
+        }if(newPinjaman.getJumlahPengembalian() <= targetPinjaman.getJumlahPinjaman() && newPinjaman.getStatus() == 2){
+            targetPinjaman.setStatus(1);
         }else{
             targetPinjaman.setStatus(newPinjaman.getStatus());
         }

@@ -33,7 +33,7 @@
             <td><a th:text="${pinjaman.getJumlahPengembalian()}"></a></td>
             <td>
                 <button class="btn btn-sm btn-warning" >
-                <a th:href="@{/pinjaman/view?idPinjaman={idPinjaman}(idPinjaman=${pinjaman.id})}" style="color: white;">Lihat</a>
+                <a th:href="@{/pinjaman/view/{id}(id=${pinjaman.id})" style="color: white;">Lihat</a>
                 </button>
                 <button class="btn btn-sm btn-info">
                     <a th:href="@{/pinjaman/ubah/{id}(id=${pinjaman.id})}" style="color: white;">Ubah</a>
