@@ -40,22 +40,22 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto my-2 my-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{#}">Anggota</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{#}" sec:authorize="isAuthenticated()">Anggota</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{#}">Simpanan</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{#}" sec:authorize="isAuthenticated()">Simpanan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{/pinjaman/view-all}">Pinjaman</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{/pinjaman/view-all}" sec:authorize="isAuthenticated()">Pinjaman</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{#}">Laporan</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{#}" sec:authorize="isAuthenticated()">Laporan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{/user/profile}">Profile</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{/user/profile}" sec:authorize="isAuthenticated()">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{/home}">Ke Home</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{/home}" sec:authorize="isAuthenticated()">Ke Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-item nav-link active" th:href="@{/logout}">
