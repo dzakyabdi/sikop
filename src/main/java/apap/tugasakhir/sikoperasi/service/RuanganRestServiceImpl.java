@@ -1,9 +1,13 @@
 package apap.tugasakhir.sikoperasi.service;
 
+<<<<<<< HEAD
+import apap.tugasakhir.sikoperasi.rest.*;
+=======
 import apap.tugasakhir.sikoperasi.rest.PeminjamanDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganNamaDetail;
 import apap.tugasakhir.sikoperasi.rest.Setting;
+>>>>>>> b60364ccd995e7d4320686beff83ce00598f919e
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -11,16 +15,13 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 @Service
 @Transactional
 public class RuanganRestServiceImpl implements RuanganRestService {
-    private  final WebClient webClient;
+    private final WebClient webClient;
 
     public RuanganRestServiceImpl(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Setting.dummyUrl).build();
@@ -60,15 +61,24 @@ public class RuanganRestServiceImpl implements RuanganRestService {
     @Override
     public List<RuanganDetail> getListRuangan() {
         List<RuanganDetail> listRuanganDetail = this.webClient.get()
-                                                    .uri("/ruangan/")
-                                                    .retrieve()
-                                                    .bodyToFlux(RuanganDetail.class)
-                                                    .collectList()
-                                                    .block();
+                .uri("/ruangan/")
+                .retrieve()
+                .bodyToFlux(RuanganDetail.class)
+                .collectList()
+                .block();
         return listRuanganDetail;
     }
 
     @Override
+    public List<FasilitasDetail> getFasilitas() {
+        return this.webClient.get()
+                .uri("/fasilitas/koperasi")
+                .retrieve()
+                .bodyToFlux(FasilitasDetail.class)
+                .collectList()
+                .block();
+    }
+
     public List<RuanganNamaDetail> getListRuanganWithNama() {
         List<RuanganNamaDetail> listRuanganDetail = this.webClient.get()
                 .uri("/ruangan/")
@@ -78,4 +88,5 @@ public class RuanganRestServiceImpl implements RuanganRestService {
                 .block();
         return listRuanganDetail;
     }
+
 }

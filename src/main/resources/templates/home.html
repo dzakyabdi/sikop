@@ -5,65 +5,98 @@
 
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
+
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<div class="container-fluid" style="margin-top:120px">
-    <h2 style="text-align: center">Selamat Datang Di GOPUD!</h2>
-    <h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser} + ' !'"></h2>
-    <button class="btn btn-primary">
-        <a th:href="@{user/changePassword}" style="color: white"> Change Password </a>
-    </button>
-</div>
+
+<!--<div class="container-fluid" style="margin-top:40px">-->
+    <!--<h2 style="text-align: center">Selamat Datang Di GOPUD!</h2>-->
+    <!--<h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser} + ' !'"></h2>-->
+    <!--<button class="btn btn-primary">-->
+        <!--<a th:href="@{user/changePassword}" style="color: white"> Change Password </a>-->
+    <!--</button>-->
+<!--</div>-->
 
 <div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                Tambah User Baru
+                Create User
             </div>
             <div class="card-body">
                 <h3 th:text="${notification}" style="text-align: center; color: red;"></h3>
-                <form th:action="@{/user/addUser}" method="POST">
-                    <label>User Name</label>
-                    <input type="text" name="username" class="form-control"/>
+                <form role="form" th:action="@{/user/addUser}" method="POST">
 
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/>
-                    
-                    <label>Role</label>
-                    <select name="role" class="form-control">
-                        <option selected value="">--Pilih Role--</option>
-                        <option th:each="roleAvailable : ${listRole}" th:value="${roleAvailable.id}" th:text="${roleAvailable.nama}"></option>
-                    </select>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="exampleInputEmail1">Nama</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name"  name="nama">
+                    </div>
 
-                    <label> Nama </label>
-                    <input type="text" name="nama" class="form-control"/>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="User Name" name="username">
+                    </div>
 
-                    <label> KTP </label>
-                    <input type="text" name="ktp" class="form-control"/>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="exampleInputEmail1">KTP</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nomor KTP" name="ktp">
+                    </div>
 
-                    <label> Tempat Lahir </label>
-                    <input type="text" name="tempat_lahir" class="form-control"/>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                    </div>
 
-                    <label> Tanggal Lahir </label>
-                    <input type="date" name="tanggal_lahir" class="form-control"/>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="exampleInputEmail1">Tempat Lahir</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tempat Lahir" name="tempat_lahir">
+                    </div>
 
-                    <label> Alamat </label>
-                    <input type="text" name="alamat" class="form-control"/>
+                    <div class="form-group col-xs-10 col-sm-10 col-md-4 col-lg-4">
+                        <label>Role</label>
+                        <select name="role" class="form-control">
+                            <option selected value="">--Pilih Role--</option>
+                            <option th:each="roleAvailable : ${listRole}" th:value="${roleAvailable.id}" th:text="${roleAvailable.nama}"></option>
+                        </select>
+                    </div>
 
-                    <label> Telepon </label>
-                    <input type="text" name="nomor_telepon" class="form-control"/>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Tanggal Lahir" name="tanggal_lahir">
+                    </div>
 
-                    <label>Pengurus</label>
-                    <select name="is_pengurus">
-                    <option th:value="null">-- Pilih Pengurus --</option>
-                    <option th:value="true">Ya</option>
-                    <option th:value="false">Tidak</option>
-                    </select>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="exampleInputEmail1">Alamat</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Alamat" name="alamat">
+                    </div>
 
-                    <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="exampleInputEmail1">Telepon</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nomor Telepon" name="nomor_telepon">
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group" th:each="jenis:listJenis">
+                        <label class="control-label col-sm-2">Pengurus</label>
+                        <select class="form-control" id="sel1" name="is_pengurus">
+                            <option th:value="null">-- Pilih Pengurus --</option>
+                            <option th:each="pengurus : ${isPengurus}" th:text="${pengurus}" th:value="${pengurus.equals('Ya') ? true:false}"></option>
+                        </select>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>

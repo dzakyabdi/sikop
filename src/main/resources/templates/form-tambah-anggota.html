@@ -52,8 +52,7 @@
             <label class="control-label col-sm-2">Pengurus</label>
             <select class="form-control" id="sel1" name="is_pengurus" th:placeholder="${anggota.is_pengurus}" th:value="${anggota.is_pengurus}">
                 <option th:value="null">-- Pilih Pengurus --</option>
-                <option th:value="true">Ya</option>
-                <option th:value="false">Tidak</option>
+                <option th:each="pengurus : ${isPengurus}" th:text="${pengurus}" th:value="${pengurus}.equals('ya') ? true:false"></option>
             </select>
         </div>
 
