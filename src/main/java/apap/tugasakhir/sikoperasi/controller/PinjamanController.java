@@ -64,8 +64,10 @@ public class PinjamanController {
     	pinjaman.setAnggota(anggota);
     	pinjaman.setStatus(0);
     	pinjaman.setJumlahPengembalian(0);
-    	pinjamanService.addPinjaman(pinjaman);
-    	return "homepage";
+        pinjamanService.addPinjaman(pinjaman);
+        List<PinjamanModel> pinjamanList =  pinjamanService.getPinjamanList();
+        model.addAttribute("pinjamanList",pinjamanList);
+    	return "view-all-pinjaman";
     }
 
     @RequestMapping(value = "pinjaman/ubah/{id}", method = RequestMethod.GET)

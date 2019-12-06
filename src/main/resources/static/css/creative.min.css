@@ -28,3 +28,26 @@
   border-radius: 16px;
   padding: 20px 10px 20px 10px;
 }
+.img,
+.blog-img,
+.user-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+  
+.offer-deal {
+  width: 100%; }
+  .offer-deal .img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%; }
+    @media (max-width: 991.98px) {
+      .offer-deal .img {
+        width: 150px;
+        height: 150px; } }
+  .offer-deal .text h3 {
+    font-size: 30px; }
