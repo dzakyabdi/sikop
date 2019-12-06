@@ -13,13 +13,13 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
 
-<div class="container-fluid" style="margin-top:40px">
-    <h2 style="text-align: center">Selamat Datang Di GOPUD!</h2>
-    <h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser} + ' !'"></h2>
-    <button class="btn btn-primary">
-        <a th:href="@{user/changePassword}" style="color: white"> Change Password </a>
-    </button>
-</div>
+<!--<div class="container-fluid" style="margin-top:40px">-->
+    <!--<h2 style="text-align: center">Selamat Datang Di GOPUD!</h2>-->
+    <!--<h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser} + ' !'"></h2>-->
+    <!--<button class="btn btn-primary">-->
+        <!--<a th:href="@{user/changePassword}" style="color: white"> Change Password </a>-->
+    <!--</button>-->
+<!--</div>-->
 
 <div class="row">
     <div class="col-md-6">
@@ -85,12 +85,11 @@
                     </div>
 
                     <div class="clearfix"></div>
-                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
-                        <label>Pengurus</label>
-                        <select name="is_pengurus" class="form-control">
+                    <div class="form-group" th:each="jenis:listJenis">
+                        <label class="control-label col-sm-2">Pengurus</label>
+                        <select class="form-control" id="sel1" name="is_pengurus">
                             <option th:value="null">-- Pilih Pengurus --</option>
-                            <option th:value="true">Ya</option>
-                            <option th:value="false">Tidak</option>
+                            <option th:each="pengurus : ${isPengurus}" th:text="${pengurus}" th:value="${pengurus.equals('Ya') ? true:false}"></option>
                         </select>
                     </div>
 

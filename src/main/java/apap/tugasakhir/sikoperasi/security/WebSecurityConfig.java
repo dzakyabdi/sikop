@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-//                .antMatchers("/home").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/home").hasAuthority("Pengurus Koperasi")
                 .antMatchers("/pinjaman/").hasAuthority("Pengurus Koperasi")
                 .antMatchers("/pinjaman/").hasAuthority("Anggota Koperasi")
                 .antMatchers("/pinjaman/ubah/").hasAuthority("Pengurus Koperasi")
@@ -44,21 +44,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-     @Autowired
-     public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
-         auth.inMemoryAuthentication()
-                 .passwordEncoder(encoder())
-                 .withUser("admin").password(encoder().encode("admin123"))
-                 .roles("Pengurus Koperasi");
-     }
+//     @Autowired
+//     public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
+//         auth.inMemoryAuthentication()
+//                 .passwordEncoder(encoder())
+//                 .withUser("admin").password(encoder().encode("admin123"))
+//                 .roles("Pengurus Koperasi");
+//     }
 
-//   @Autowired
-//   private UserDetailsService userDetailsService;
-//
-//   @Autowired
-//   public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//       auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
-//   }
+   @Autowired
+   private UserDetailsService userDetailsService;
+
+   @Autowired
+   public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+       auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+   }
 
 
 }

@@ -1,9 +1,6 @@
 package apap.tugasakhir.sikoperasi.service;
 
-import apap.tugasakhir.sikoperasi.rest.FasilitasDetail;
-import apap.tugasakhir.sikoperasi.rest.PeminjamanDetail;
-import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
-import apap.tugasakhir.sikoperasi.rest.Setting;
+import apap.tugasakhir.sikoperasi.rest.*;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -66,8 +63,13 @@ public class RuanganRestServiceImpl implements RuanganRestService {
     }
 
     @Override
-    public Mono<FasilitasDetail> getFasilitas() {
-        return this.webClient.get().uri("/koperasi/fasilitas").retrieve().bodyToMono(FasilitasDetail.class);
+    public List<FasilitasDetail> getFasilitas() {
+        return this.webClient.get()
+                .uri("/fasilitas/koperasi")
+                .retrieve()
+                .bodyToFlux(FasilitasDetail.class)
+                .collectList()
+                .block();
     }
 
 //    public Mono<String> getFasilitas() {

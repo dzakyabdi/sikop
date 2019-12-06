@@ -52,21 +52,23 @@ public class UserController {
 
             if(user.getRole().getNama().equals("Kepala Sekolah") || user.getRole().getNama().equals("Guru")) {
                 userRestService.postUserGuruToSiSivitas(userRestService.postGuruDetail(user, anggota));
-                return "home";
+                return "action-success";
             }
             else if (user.getRole().getNama().equals("Admin TU") || user.getRole().getNama().equals("Pustakawan")
                     || user.getRole().getNama().equals("Pengurus Koperasi")
                     || user.getRole().getNama().equals("Anggota Koperasi")) {
                 userRestService.postUserPegawaiToSiSivitas(userRestService.postPegawaiDetail(user, anggota));
-                return "home";
+                return "action-success";
             }
 
             userRestService.postUserSiswaToSiSivitas(userRestService.postSiswaDetail(user, anggota));
-            return "home";
+            return "action-success";
         }
         String message = "Password harus terdiri dari setidaknya 1 huruf dan 1 angka dan terdiri dari setidaknya 8 karakter";
         attributes.addFlashAttribute("notification", message);
-        return "redirect:/";
+
+
+        return "home";
     }
 
     @RequestMapping(value = "/changePassword", method = RequestMethod.GET)

@@ -55,7 +55,7 @@
                                 <a class="nav-link js-scroll-trigger" th:href="@{/user/profile}" sec:authorize="isAuthenticated()">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{/home}">Daftar</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{/home}" sec:authorize="hasAuthority('Pengurus Koperasi')">Daftar</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-item nav-link active" th:href="@{/logout}" sec:authorize="isAuthenticated()">
