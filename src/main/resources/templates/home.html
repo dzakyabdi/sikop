@@ -81,15 +81,16 @@
                     <div class="clearfix"></div>
                     <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
                         <label for="exampleInputEmail1">Telepon</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nomor Telepon" name="telepon">
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nomor Telepon" name="nomor_telepon">
                     </div>
 
                     <div class="clearfix"></div>
                     <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
                         <label>Pengurus</label>
-                        <select class="form-control" id="sel1" name="is_pengurus" th:placeholder="${anggota.is_pengurus}" th:value="${anggota.is_pengurus}">
+                        <select name="is_pengurus" class="form-control">
                             <option th:value="null">-- Pilih Pengurus --</option>
-                            <option th:each="pengurus : ${isPengurus}" th:text="${pengurus}" th:value="${pengurus}.equals('ya') ? true:false"></option>
+                            <option th:value="true">Ya</option>
+                            <option th:value="false">Tidak</option>
                         </select>
                     </div>
 

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -32,48 +34,44 @@ public class AnggotaController {
         return "detailAnggota";
     }
 
-    @RequestMapping(value = "/anggota/tambah", method = RequestMethod.GET)
-    public String tambahAnggotaFormPage(Model model) {
-        AnggotaModel anggota = new AnggotaModel();
-
-        List<FasilitasDetail> listFasilitas = ruanganRestService.getFasilitas();
-        List<String> isPengurus = {"Tidak"};
-
-        int jumlahPengurus = 0;
-        int jumlahFasilitas = 0;
-
-        for(FasilitasDetail fasilitas : listFasilitas) {
-            jumlahFasilitas += Integer.parseInt(fasilitas.getJumlah());
-        }
-
-        for(AnggotaModel anggota : anggotaService.getAllAnggota()) {
-            if(anggota.getIs_pengurus() == true) {
-                jumlahPengurus +1;
-            }
-        }
-
-        if(jumlahFasilitas > jumlahPengurus) {
-            isPengurus.add("Ya");
-        }
-
-        model.addAttribute("isPengurus", isPengurus);
-        model.addAttribute("anggota", anggota);
-
-        return "form-tambah-anggota";
-    }
-
-    @RequestMapping(value = "/anggota/tambah", method = RequestMethod.POST)
-    public String tambahAnggotaFormSubmit(@ModelAttribute AnggotaModel anggota, Model model) {
-        String nia = "";
-        Random random = new Random();
-        for(int i = 0; i < 8; i++) {
-            int x = random.nextInt(10);
-            nia += String.valueOf(x);
-        }
-        anggota.setNia(nia);
-        anggotaService.addAnggota(anggota);
-
-        model.addAttribute("anggota", anggota);
-        return "tambah-anggota";
-    }
+//    @RequestMapping(value = "/anggota/tambah", method = RequestMethod.GET)
+//    public String tambahAnggotaFormPage(Model model) {
+//        AnggotaModel anggota = new AnggotaModel();
+//
+//        FasilitasDetail listfasilitas = ruanganRestService.getFasilitas().block();
+//        List<String> isPengurus = Arrays.asList("Tidak");
+//
+//        int jumlahPengurus = 0;
+//        int jumlahFasilitas = Integer.parseInt(listfasilitas.getJumlah());
+//
+//        for(AnggotaModel obj : anggotaService.getAllAnggota()) {
+//            if(obj.getIs_pengurus() == true) {
+//                jumlahPengurus +=1;
+//            }
+//        }
+//
+//        if(jumlahFasilitas> jumlahPengurus) {
+//            isPengurus.add("Ya");
+//        }
+//
+//        model.addAttribute("isPengurus", isPengurus);
+//        model.addAttribute("anggota", anggota);
+//
+//        return "form-tambah-anggota";
+//    }
+//
+//    @RequestMapping(value = "/anggota/tambah", method = RequestMethod.POST)
+//    public String tambahAnggotaFormSubmit(@ModelAttribute AnggotaModel anggota, Model model) {
+//        String nia = "";
+//        Random random = new Random();
+//        for(int i = 0; i < 8; i++) {
+//            int x = random.nextInt(10);
+//            nia += String.valueOf(x);
+//        }
+//        anggota.setNia(nia);
+//        anggotaService.addAnggota(anggota);
+//
+//        model.addAttribute("anggota", anggota);
+//        return "tambah-anggota";
+//    }
 }

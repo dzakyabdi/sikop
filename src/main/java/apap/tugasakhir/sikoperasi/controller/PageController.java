@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -47,27 +48,27 @@ public class PageController {
             model.addAttribute("admin", "true");
         }
 
-        List<FasilitasDetail> listFasilitas = ruanganRestService.getFasilitas();
-        List<String> isPengurus = {"Tidak"};
+//        List<FasilitasDetail> listFasilitas = ruanganRestService.getFasilitas();
+//        List<String> isPengurus = Arrays.asList("Tidak");
+//
+//        int jumlahPengurus = 0;
+//        int jumlahFasilitas = 0;
+//
+//        for(FasilitasDetail fasilitas : listFasilitas) {
+//            jumlahFasilitas += Integer.parseInt(fasilitas.getJumlah());
+//        }
+//
+//        for(AnggotaModel anggota : anggotaService.getAllAnggota()) {
+//            if(anggota.getIs_pengurus() == true) {
+//                jumlahPengurus +=1;
+//            }
+//        }
+//
+//        if(jumlahFasilitas > jumlahPengurus) {
+//            isPengurus.add("Ya");
+//        }
 
-        int jumlahPengurus = 0;
-        int jumlahFasilitas = 0;
-
-        for(FasilitasDetail fasilitas : listFasilitas) {
-            jumlahFasilitas += Integer.parseInt(fasilitas.getJumlah());
-        }
-
-        for(AnggotaModel anggota : anggotaService.getAllAnggota()) {
-            if(anggota.getIs_pengurus() == true) {
-                jumlahPengurus +1;
-            }
-        }
-
-        if(jumlahFasilitas > jumlahPengurus) {
-            isPengurus.add("Ya");
-        }
-
-        model.addAttribute("isPengurus", isPengurus);
+//        model.addAttribute("isPengurus", isPengurus);
 
         return "home";
     }

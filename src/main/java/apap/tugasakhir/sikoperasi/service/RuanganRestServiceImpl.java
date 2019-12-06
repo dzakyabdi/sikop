@@ -17,7 +17,7 @@ import java.util.Map;
 @Service
 @Transactional
 public class RuanganRestServiceImpl implements RuanganRestService {
-    private  final WebClient webClient;
+    private final WebClient webClient;
 
     public RuanganRestServiceImpl(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Setting.dummyUrl).build();
@@ -57,21 +57,20 @@ public class RuanganRestServiceImpl implements RuanganRestService {
     @Override
     public List<RuanganDetail> getListRuangan() {
         List<RuanganDetail> listRuanganDetail = this.webClient.get()
-                                                    .uri("/ruangan/")
-                                                    .retrieve()
-                                                    .bodyToFlux(RuanganDetail.class)
-                                                    .collectList()
-                                                    .block();
+                .uri("/ruangan/")
+                .retrieve()
+                .bodyToFlux(RuanganDetail.class)
+                .collectList()
+                .block();
         return listRuanganDetail;
     }
 
     @Override
-    public List<FasilitasDetail> getFasilitas() {
-        List<FasilitasDetail> listFasilitasDetail = this.webClient.get()
-                                                        .uri("/koperasi/fasilitas")
-                                                        .retrieve()
-                                                        .bodyToFlux(FasilitasDetail.class)
-                                                        .collectList()
-                                                        .block();
-        return listFasilitasDetail;
+    public Mono<FasilitasDetail> getFasilitas() {
+        return this.webClient.get().uri("/koperasi/fasilitas").retrieve().bodyToMono(FasilitasDetail.class);
+    }
+
+//    public Mono<String> getFasilitas() {
+//        return this.webClient.get().uri("/koperasi/fasilitas").retrieve().bodyToMono(String.class);
+//    }
 }
