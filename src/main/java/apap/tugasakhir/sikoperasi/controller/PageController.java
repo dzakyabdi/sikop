@@ -4,7 +4,6 @@ package apap.tugasakhir.sikoperasi.controller;
 import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.rest.FasilitasDetail;
 import apap.tugasakhir.sikoperasi.service.AnggotaService;
-import apap.tugasakhir.sikoperasi.model.PinjamanModel;
 import apap.tugasakhir.sikoperasi.service.PinjamanService;
 import apap.tugasakhir.sikoperasi.service.RoleService;
 import apap.tugasakhir.sikoperasi.service.RuanganRestService;
@@ -17,8 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 public class PageController {
