@@ -36,7 +36,9 @@
 					<span class="login100-form-logo">
 							<img src="../img/logo-login.png" style="width:100px;height:100px;">
 					</span>
-
+					<span th:if="${param.error}" class="login100-form-title p-b-34 p-t-27">
+						<span style="color: white; font-size: 20px">Invalid username or password</span>
+					</span>
 					<span class="login100-form-title p-b-34 p-t-27">
 						Log in
 					</span>

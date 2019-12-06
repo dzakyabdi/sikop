@@ -39,24 +39,50 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{#}" sec:authorize="hasAuthority('Pengurus Koperasi')">Anggota</a>
+                            <li class="nav-item dropdown">
+<!--                                <a class="nav-link js-scroll-trigger" th:href="@{#}" sec:authorize="isAuthenticated()">Anggota</a>-->
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isAuthenticated()">
+                                    Anggota
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" th:href="@{/home}" sec:authorize="hasAuthority('Pengurus Koperasi')">Daftar</a>
+                                    <a class="dropdown-item" th:href="@{/anggota/detail}">Detail Anggota</a>
+                                    <a class="dropdown-item" th:href="@{/anggota/viewall}" sec:authorize="hasAuthority('Pengurus Koperasi')">Semua Anggota</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAuthority('Pengurus Koperasi')">
+                                    Simpanan
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" th:href="@{/simpanan/tambah}" sec:authorize="hasAuthority('Pengurus Koperasi')">Tambah Simpanan</a>
+                                    <a class="dropdown-item" th:href="@{/simpanan/view-all}" sec:authorize="hasAuthority('Pengurus Koperasi')">Semua Simpanan</a>
+                                </div>
+<!--                                <a class="nav-link js-scroll-trigger" th:href="@{/simpanan/tambah}" sec:authorize="hasAuthority('Pengurus Koperasi')">Simpanan</a>-->
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isAuthenticated()">
+                                    Pinjaman
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" th:href="@{/pinjaman/ajukan}" sec:authorize="hasAuthority('Pengurus Koperasi')">Ajukan Pinjaman</a>
+                                    <a class="dropdown-item" th:href="@{/pinjaman/view-all}" sec:authorize="hasAuthority('Pengurus Koperasi')">Semua Pinjaman</a>
+                                    <a class="dropdown-item" th:href="@{/pinjaman/view/}+${anggota.id}" sec:authorize="hasAuthority('Anggota Koperasi')">Detail Pinjaman</a>
+                                </div>
+<!--                                <a class="nav-link js-scroll-trigger" th:href="@{/pinjaman/view-all}" sec:authorize="isAuthenticated()">Pinjaman</a>-->
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{#}" sec:authorize="isAuthenticated()">Simpanan</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{/laporan-keuangan}" sec:authorize="isAuthenticated()">Laporan Keuangan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{/pinjaman/view-all}" sec:authorize="isAuthenticated()">Pinjaman</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{/laporan-keuangan}" sec:authorize="isAuthenticated()">Laporan</a>
+                                <a class="nav-link js-scroll-trigger" th:href="@{/ruangan/peminjaman}" sec:authorize="hasAuthority('Pengurus Koperasi')">Peminjaman Ruang</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" th:href="@{/user/profile}" sec:authorize="isAuthenticated()">Profile</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" th:href="@{/home}" sec:authorize="hasAuthority('Pengurus Koperasi')">Daftar</a>
-                            </li>
+<!--                            <li class="nav-item">-->
+<!--                                <a class="nav-link js-scroll-trigger" th:href="@{/home}" sec:authorize="hasAuthority('Pengurus Koperasi')">Daftar</a>-->
+<!--                            </li>-->
                             <li class="nav-item">
                                 <a class="nav-item nav-link active" th:href="@{/logout}" sec:authorize="isAuthenticated()">
                                     <buton class="btn btn-outline-light">Logout</buton>

@@ -46,7 +46,10 @@ public class SimpananController {
         List<AnggotaModel> listAnggota = anggotaService.getAllAnggota();
         UserModel userNow = userService.getUser();
         AnggotaModel anggotaNow = anggotaService.getAnggotaByUser(userNow);
-        simpananBaru.setAnggotaPenerima(anggotaNow);
+//        System.out.println("Heloooooooo");
+//        simpananBaru.setAnggotaPenerima(anggotaNow);
+//        System.out.println(anggotaNow.getNama());
+//        System.out.println(anggotaNow.getId());
         model.addAttribute("simpananBaru", simpananBaru);
         model.addAttribute("listAnggota", listAnggota);
         model.addAttribute("listJenisSimpanan", listJenisSimpanan);
@@ -58,6 +61,9 @@ public class SimpananController {
             @ModelAttribute SimpananModel simpananBaru,
             Model model
     ){
+        UserModel userNow = userService.getUser();
+        AnggotaModel anggotaNow = anggotaService.getAnggotaByUser(userNow);
+        simpananBaru.setAnggotaPenerima(anggotaNow);
         simpananService.addSimpanan(simpananBaru);
         model.addAttribute("simpananBaru", simpananBaru);
         return "action-success";
