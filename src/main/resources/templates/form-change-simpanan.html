@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Ubah Simpanan</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<div class="col-sm-3"></div>
+<div class="container-fluid col-sm-6 main-cont" style="margin-top:120px">
+    <h2>Ubah Simpanan</h2>
+    <form class="form-horizontal" th:action = "@{/simpanan/ubah/} + ${simpanan.id}" th:object="${simpanan}" method="POST">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Tanggal Setor</label>
+            <div class="col-sm-5">
+                <input type="date" th:value="${simpanan.tanggal_setor}" name="tanggal_setor" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Jumlah</label>
+            <div class="col-sm-5">
+                <input type="number" th:value="${simpanan.jumlah}" name="jumlah" class="form-control" min="0">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Jenis Simpanan</label>
+            <div class="col-sm-5">
+                <select class="form-control" name="jenisSimpanan">
+                    <option value="" selected hidden>-- Pilih Jenis Simpanan --</option>
+                    <option th:each="jenisSimpanan, i : ${jenisSimpananList}" th:value="${jenisSimpanan.id}" th:text="${jenisSimpananList.get(i.index).nama}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Anggota Penyetor</label>
+            <div class="col-sm-5">
+                <select class="form-control" name="anggotaPenyetor">
+                    <option value="" selected hidden>-- Pilih Anggota --</option>
+                    <option th:each="anggota, i : ${listAnggota}" th:value="${anggota.id}" th:text="${listAnggota[__${i.index}__].nama}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+        <form th:action="@{/simpanan/ubah/}+${simpanan.id}">
+            <button type="submit" th:value="${simpanan.id}" class="btn btn-sm btn-secondary btn-align-center">Ubah</button>
+        </form>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
