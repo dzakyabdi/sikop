@@ -1,13 +1,10 @@
 package apap.tugasakhir.sikoperasi.service;
 
-<<<<<<< HEAD
 import apap.tugasakhir.sikoperasi.rest.*;
-=======
 import apap.tugasakhir.sikoperasi.rest.PeminjamanDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganNamaDetail;
 import apap.tugasakhir.sikoperasi.rest.Setting;
->>>>>>> b60364ccd995e7d4320686beff83ce00598f919e
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -16,7 +13,6 @@ import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @Transactional

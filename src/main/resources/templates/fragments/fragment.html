@@ -67,7 +67,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" th:href="@{/pinjaman/ajukan}" sec:authorize="isAuthenticated()">Ajukan Pinjaman</a>
                         <a class="dropdown-item" th:href="@{/pinjaman/view-all}" sec:authorize="hasAuthority('Pengurus Koperasi')">Semua Pinjaman</a>
-<!--                        <a class="dropdown-item" th:href="@{/pinjaman/view/}+${pinjaman.id}" sec:authorize="hasAuthority('Anggota Koperasi')">Semua Anggota</a>-->
+                        <a class="dropdown-item" th:href="@{/pinjaman/view-all/anggota}" sec:authorize="hasAuthority('Anggota Koperasi')">Semua Pinjaman</a>
+                        <!--                        <a class="dropdown-item" th:href="@{/pinjaman/view/}+${pinjaman.id}" sec:authorize="hasAuthority('Anggota Koperasi')">Semua Anggota</a>-->
                     </div>
                     <!--                                <a class="nav-link js-scroll-trigger" th:href="@{/pinjaman/view-all}" sec:authorize="isAuthenticated()">Pinjaman</a>-->
                 </li>
@@ -86,11 +87,6 @@
                 <li class="nav-item">
                     <a class="nav-item nav-link active" th:href="@{/logout}" sec:authorize="isAuthenticated()">
                         <buton class="btn btn-outline-light">Logout</buton>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item nav-link active" th:href="@{/login}" sec:authorize="!isAuthenticated()">
-                        <buton class="btn btn-outline-light">Login</buton>
                     </a>
                 </li>
             </ul>
