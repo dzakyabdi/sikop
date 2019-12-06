@@ -1,12 +1,18 @@
 package apap.tugasakhir.sikoperasi.controller;
 
 
+<<<<<<< HEAD
 import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.rest.FasilitasDetail;
 import apap.tugasakhir.sikoperasi.service.AnggotaService;
+=======
+import apap.tugasakhir.sikoperasi.model.PinjamanModel;
+import apap.tugasakhir.sikoperasi.service.PinjamanService;
+>>>>>>> b60364ccd995e7d4320686beff83ce00598f919e
 import apap.tugasakhir.sikoperasi.service.RoleService;
 import apap.tugasakhir.sikoperasi.service.RuanganRestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -28,12 +34,17 @@ public class PageController {
     @Autowired
     RuanganRestService ruanganRestService;
 
+    @Qualifier("pinjamanServiceImpl")
+    @Autowired
+    private PinjamanService pinjamanService;
+
     @RequestMapping("/")
     public String home(
             Model model
     ) {
         model.addAttribute("listRole", roleService.findAll());
         Authentication rawDataUser = SecurityContextHolder.getContext().getAuthentication();
+        PinjamanModel existingPinjaman = pinjamanService.getPinjamanById(id).get();
         if(rawDataUser.getAuthorities().toString().contains("ADMIN")){
             model.addAttribute("admin", "true");
         }

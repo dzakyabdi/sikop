@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,10 +34,9 @@ public class PinjamanController {
         return "view-all-pinjaman";
     }
 
-    @RequestMapping("pinjaman/view")
-    public String viewById(
-            @RequestParam("idPinjaman") Long idPinjaman, Model model) {
-        PinjamanModel existingPinjaman = pinjamanService.getPinjamanById(idPinjaman).get();
+    @RequestMapping(value = "pinjaman/view/{id}", method = RequestMethod.GET)
+    public String viewPinjaman(@PathVariable Long id, Model model) {
+        PinjamanModel existingPinjaman = pinjamanService.getPinjamanById(id).get();
         if( existingPinjaman.getStatus() == 0) { model.addAttribute("status", "Menunggu Persetujuan"); }
         else if ( existingPinjaman.getStatus() == 1) { model.addAttribute("status", "Ditolak"); }
         else if ( existingPinjaman.getStatus() == 2) { model.addAttribute("status", "Disetujui"); }
@@ -65,8 +63,10 @@ public class PinjamanController {
     	pinjaman.setAnggota(anggota);
     	pinjaman.setStatus(0);
     	pinjaman.setJumlahPengembalian(0);
-    	pinjamanService.addPinjaman(pinjaman);
-    	return "homepage";
+        pinjamanService.addPinjaman(pinjaman);
+        List<PinjamanModel> pinjamanList =  pinjamanService.getPinjamanList();
+        model.addAttribute("pinjamanList",pinjamanList);
+    	return "view-all-pinjaman";
     }
 
     @RequestMapping(value = "pinjaman/ubah/{id}", method = RequestMethod.GET)

@@ -99,21 +99,20 @@ public class UserController {
     
     @RequestMapping(value ="/profile", method = RequestMethod.GET)
     private String getProfile(Model model) {
-    	// digunakan jika fitur login sudah dapat digunakan
-//    	UserModel user = userService.getUser();
+   	    UserModel user = userService.getUser();
     	boolean isSivitas = false;
     	boolean isPegawai = false;
     	boolean isGuru = false;
     	try {
-    		//parameter uuid diganti jika fitur login sudah dapat digunakan
-    		UserDetail pegawai = userRestService.getEmployee("53338ba8258241989aaec88227079999").block().getResult();
+    		
+    		UserDetail pegawai = userRestService.getEmployee(user.getId()).block().getResult();
     		isSivitas = true;
     		isPegawai = true;
     		model.addAttribute("sivitas", pegawai);
     	} catch (WebClientResponseException.NotFound e)	{
     		try {
-    			//parameter uuid diganti jika fitur login sudah dapat digunakan
-    			UserDetail guru = userRestService.getTeacher("1").block().getResult();
+    			
+    			UserDetail guru = userRestService.getTeacher(user.getId()).block().getResult();
         		isSivitas = true;
         		isGuru = true;
             	model.addAttribute("sivitas", guru);
@@ -122,7 +121,8 @@ public class UserController {
     	} 
     	model.addAttribute("isSivitas", isSivitas);
     	model.addAttribute("isPegawai", isPegawai);
-    	model.addAttribute("isGuru", isGuru);
+        model.addAttribute("isGuru", isGuru);
+        model.addAttribute("user", user);
     	return "user-profile";
     	
     }

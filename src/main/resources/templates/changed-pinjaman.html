@@ -6,10 +6,13 @@
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<div style="margin-top: 250px;">
-    <h2 th:text="'Pinjaman berhasil diubah'"></h2>
+<div class="col-sm-3">
+    <h2 class="title" th:text="'Pinjaman berhasil diubah'"></h2>
     <br>
-    <a th:href="@{/}">Kembali ke Halaman Utama</a>
+<!--    <a th:href="@{/pinjaman/view-all}">Kembali ke Halaman Utama</a>-->
+    <form th:action="@{/pinjaman/view-all/}">
+        <button type="submit" class="btn btn-sm btn-secondary">Halaman Utama</button>
+    </form>
 </div>
 
 </body>

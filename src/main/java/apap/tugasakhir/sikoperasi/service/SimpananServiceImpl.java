@@ -33,4 +33,28 @@ public class SimpananServiceImpl implements SimpananService {
         }
         return simpananDB.sumSimpanan(anggota);
     }
+
+    @Override
+    public SimpananModel getSimpananById(Long id){
+        return simpananDB.findById(id).get();
+    }
+
+    @Override
+    public SimpananModel updateSimpanan(SimpananModel newSimpanan){
+        SimpananModel targetSimpanan = simpananDB.findById(newSimpanan.getId()).get();
+        try{
+            targetSimpanan.setTanggal_setor(newSimpanan.getTanggal_setor());
+            targetSimpanan.setJumlah(newSimpanan.getJumlah());
+            targetSimpanan.setJenisSimpanan(newSimpanan.getJenisSimpanan());
+            targetSimpanan.setAnggotaPenyetor(newSimpanan.getAnggotaPenyetor());
+            return targetSimpanan;
+        }catch (NullPointerException e){
+            return null;
+        }
+    }
+
+    @Override
+    public List<SimpananModel> getAllSimpanan(){
+        return simpananDB.findAll();
+    }
 }

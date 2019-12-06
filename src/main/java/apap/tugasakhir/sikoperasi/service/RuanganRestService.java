@@ -4,6 +4,7 @@ import apap.tugasakhir.sikoperasi.rest.FasilitasDetail;
 import apap.tugasakhir.sikoperasi.rest.ListFasilitasDetail;
 import apap.tugasakhir.sikoperasi.rest.PeminjamanDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
+import apap.tugasakhir.sikoperasi.rest.RuanganNamaDetail;
 import org.json.JSONObject;
 import reactor.core.publisher.Mono;
 
@@ -14,6 +15,5 @@ public interface RuanganRestService {
     JSONObject convertToJSONObject(PeminjamanDetail peminjamanDetail, RuanganDetail ruanganDetail);
     List<RuanganDetail> getListRuangan();
     List<FasilitasDetail> getFasilitas();
-//    Mono<String> getFasilitas();
-
+    List<RuanganNamaDetail> getListRuanganWithNama();
 }

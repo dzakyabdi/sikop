@@ -9,53 +9,84 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
 
-<div class="container" style="margin-top:120px">
-    <h2>Tambah Simpanan</h2>
+<!--<div class="container" style="margin-top:120px">-->
+<!--    <h2>Tambah Simpanan</h2>-->
+<!--    <form class="form-horizontal" th:action="@{/simpanan/tambah}" th:object="${simpananBaru}" method="post">-->
+<!--        <div class="form-group">-->
+<!--            <label class="control-label col-sm-2">Tanggal Setor</label>-->
+<!--            <div class="col-sm-10">-->
+<!--                <input type="date" th:value="${simpananBaru.tanggal_setor}" name="tanggal_setor" class="form-control">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label class="control-label col-sm-2">Jumlah</label>-->
+<!--            <div class="col-sm-10">-->
+<!--                <input type="text" th:value="${simpananBaru.jumlah}" name="jumlah" class="form-control">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label class="control-label col-sm-2">Jenis Simpanan</label>-->
+<!--            <select class="form-control" name="jenisSimpanan">-->
+<!--                <option value="" selected hidden>&#45;&#45; Pilih Jenis Simpanan &#45;&#45;</option>-->
+<!--                <option th:each="jenisSimpanan, i : ${listJenisSimpanan}" th:value="${jenisSimpanan.id}" th:text="${listJenisSimpanan[__${i.index}__].nama}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label class="control-label col-sm-2">Anggota Penyetor</label>-->
+<!--            <select class="form-control" name="anggotaPenyetor">-->
+<!--                <option value="" selected hidden>&#45;&#45; Pilih Anggota &#45;&#45;</option>-->
+<!--                <option th:each="anggota, i : ${listAnggota}" th:value="${anggota.id}" th:text="${listAnggota[__${i.index}__].nama}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-offset-2 col-sm-10">-->
+<!--                <button type="submit" class="btn btn-dark" name="submit">Submit</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+<div class="container" style="margin-top: 100px;">
+<div class="container-fluid col-sm-6 container-form" style= "margin-top: 20px; padding-bottom: 10px;" >
+    <h3>Tambah Simpanan</h3>
     <form class="form-horizontal" th:action="@{/simpanan/tambah}" th:object="${simpananBaru}" method="post">
-        <div class="form-group">
-            <label class="control-label col-sm-2">Tanggal Setor</label>
-            <div class="col-sm-10">
+        <div class="form-row" style="margin-top: 10px; ">
+            <label class="col-sm-5 col-form-label">Tanggal:</label>
+            <div class="col-sm-7">
                 <input type="date" th:value="${simpananBaru.tanggal_setor}" name="tanggal_setor" class="form-control">
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2">Jumlah</label>
-            <div class="col-sm-10">
-                <input type="text" th:value="${simpananBaru.jumlah}" name="jumlah" class="form-control">
+        <div class="form-row" style="margin-top: 10px; ">
+            <label class="col-sm-5 col-form-label">Jumlah:</label>
+            <div class="col-sm-7">
+                <input type="text" th:value="${simpananBaru.jumlah}" name="jumlah" class="form-control" min=0>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2">Jenis Simpanan</label>
-            <select class="form-control" name="jenisSimpanan">
-                <option value="" selected hidden>-- Pilih Jenis Simpanan --</option>
-                <option th:each="jenisSimpanan, i : ${listJenisSimpanan}" th:value="${jenisSimpanan.id}" th:text="${listJenisSimpanan[__${i.index}__].nama}"></option>
-            </select>
+        <div class="form-row" style="margin-top: 10px;">
+            <label  class="col-sm-5 col-form-label">Jenis Simpanan:</label>
+            <div class="col-sm-7">
+                <select class="form-control" name="jenisSimpanan">
+                    <option value="" selected hidden>Pilih Jenis Simpanan</option>
+                    <option th:each="jenisSimpanan, i : ${listJenisSimpanan}" th:value="${jenisSimpanan.id}" th:text="${listJenisSimpanan[__${i.index}__].nama}"></option>
+                </select>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2">Anggota Penyetor</label>
-            <select class="form-control" name="anggotaPenyetor">
-                <option value="" selected hidden>-- Pilih Anggota --</option>
-                <option th:each="anggota, i : ${listAnggota}" th:value="${anggota.id}" th:text="${listAnggota[__${i.index}__].nama}"></option>
-            </select>
+        <div class="form-row" style="margin-top: 10px;">
+            <label  class="col-sm-5 col-form-label">Anggota Penyetor:</label>
+            <div class="col-sm-7">
+                <select class="form-control" name="anggotaPenyetor">
+                    <option value="" selected hidden>Pilih Anggota</option>
+                    <option th:each="anggota, i : ${listAnggota}" th:value="${anggota.id}" th:text="${listAnggota[__${i.index}__].nama}"></option>
+                </select>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2">Anggota Penerima</label>
-            <select class="form-control" name="anggotaPenerima">
-                <option value="" selected hidden>-- Pilih Anggota --</option>
-                <option th:each="anggota, i : ${listAnggota}" th:value="${anggota.id}" th:text="${listAnggota[__${i.index}__].nama}"></option>
-            </select>
-<!--            <div class="col-sm-10">-->
-<!--                need to know how to get the user right now-->
-<!--                <input type="date" th:placeholder="${anggota.tanggal_lahir}" th:value="${anggota.tanggal_lahir}" class="form-control"name="tanggal_lahir">-->
-<!--            </div>-->
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-dark" name="submit">Submit</button>
+        <div class="form-row" style="margin-top: 10px;">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-danger">Submit</button>
             </div>
         </div>
     </form>
 </div>
-
+</div>
 </body>
 </html>

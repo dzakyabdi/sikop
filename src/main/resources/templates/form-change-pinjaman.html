@@ -10,22 +10,32 @@
 
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<h2>Ubah Pinjaman</h2>
-<div>
-    <form th:action = "@{/pinjaman/ubah/} + ${pinjaman.id}" th:object="${pinjaman}" method="POST">
-        <input type = "hidden" th:field="${pinjaman.id}"/>
-        Jumlah Pengembalian: <br>
-        <input type="number" name="jumlahPengembalian" th:value="${pinjaman.jumlahPengembalian}"/>
+
+<div class="col-sm-3"></div>
+<div class="container-fluid col-sm-6 main-cont" style="margin-top:120px">
+    <h2>Ubah Pinjaman</h2>
+    <form class="form-horizontal" th:action = "@{/pinjaman/ubah/} + ${pinjaman.id}" th:object="${pinjaman}" method="POST">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Jumlah Pengembalian</label>
+            <div class="col-sm-10">
+                <input type="number" th:value="${pinjaman.jumlahPengembalian}" name="jumlahPengembalian" class="form-control" min=0>
+            </div>
+        </div>
         <br>
-        <label>Status</label>
-        <select th:field="${pinjaman.status}">
-            <option th:value="0" >Belum disetujui</option>
-            <option th:value="1" >Disetujui</option>
-            <option th:value="2" >Sudah dikembalikan</option>
-        </select>
-        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Status</label>
+            <div class="col-sm-10">
+                <select th:field="${pinjaman.status}">
+                    <option th:value="0" >Belum disetujui</option>
+                    <option th:value="1" >Disetujui</option>
+                    <option th:value="2" >Sudah dikembalikan</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-3"></div>
         <form th:action="@{/pinjaman/ubah/}+${pinjaman.id}">
-            <button type="submit" th:value="${pinjaman.id}" class="btn btn-sm btn-secondary">Ubah</button>
+            <button type="submit" th:value="${pinjaman.id}" class="btn btn-sm btn-secondary btn-align-center">Ubah</button>
         </form>
     </form>
 </div>

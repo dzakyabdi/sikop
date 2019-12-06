@@ -6,76 +6,30 @@
         <!--<link rel="stylesheet" th:href="@{/css/detail-anggota.css}">-->
     <!--</head>-->
 
-    <head th:fragment="css">
-        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <head>
+        <title>Detail Anggota</title>
+      
+        <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+        <object th:include="fragments/fragment :: js" th:remove="tag"></object>
     </head>
-
-    <!-- jquery, ajax, and bootstrap.js -->
-    <head th:fragment="js">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script th:src="@{/js/bootstrap.min.js}"></script>
-    </head>
-
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-</head>
 
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<div class="container" style="margin-top:60px; margin-bottom:105px">
+<div class="col-sm-3"></div>
+<div class="container-fluid col-sm-6 main-cont">
+    <h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); margin-top: 10px; margin-bottom: 10px; padding: 10px; color: white;">Detail Anggota</h2>
     <div class="row">
         <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
             <div class="well profile">
                 <div class="col-sm-12">
-                    <div class="col-xs-12 col-sm-8">
+                    <div>
                         <h2 th:text="${anggota.nama}"></h2>
                         <p><strong th:text="'Tempat Lahir : ' + ${anggota.tempat_lahir}"></strong></p>
-                        <p><strong th:text="'Tanggal Lahir : ' + ${anggota.tanggal_lahir}"></strong></p>
+                        <p><strong th:text="'Tanggal Lahir : ' + ${#dates.format(anggota.tanggal_lahir, 'yyyy-MM-dd')}"></strong></p>
                         <p><strong th:text="'Alamat : ' + ${anggota.alamat}"></strong></p>
                         <p><strong th:text="'Telepon : ' + ${anggota.nomor_telepon}"></strong></p>
                         <p><strong th:text="'KTP : ' + ${anggota.ktp}"></strong></p>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 text-center">
-                        <figure>
-                            <img th:src="@{/img/logo.png}"/>
-                            <figcaption class="ratings">
-                                <p><strong th:text="'NIA : ' + ${anggota.nia}"></strong></p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <div class="col-xs-12 divider text-center">
-                    <div class="col-xs-12 col-sm-4 emphasis">
-                        <h2><strong> 20,7K </strong></h2>
-                        <p><small>Followers</small></p>
-                        <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 emphasis">
-                        <h2><strong>245</strong></h2>
-                        <p><small>Following</small></p>
-                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 emphasis">
-                        <h2><strong>43</strong></h2>
-                        <p><small>Snippets</small></p>
-                        <div class="btn-group dropup btn-block">
-                            <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Options </button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu text-left" role="menu">
-                                <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
-                                <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user for spam</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
-                            </ul>
-                        </div>
+                        <p><strong th:text="'NIA : ' + ${anggota.nia}"></strong></p>
                     </div>
                 </div>
             </div>
