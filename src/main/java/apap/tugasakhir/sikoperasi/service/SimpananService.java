@@ -9,4 +9,7 @@ public interface SimpananService {
     void addSimpanan(SimpananModel simpanan);
     List<SimpananModel> getAllSimpananByAnggota(AnggotaModel anggota);
     int sumSimpanan(AnggotaModel anggota);
+    SimpananModel getSimpananById(Long id);
+    SimpananModel updateSimpanan(SimpananModel newSimpanan);
+    List<SimpananModel> getAllSimpanan();
 }

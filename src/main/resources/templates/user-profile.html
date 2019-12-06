@@ -13,19 +13,18 @@
     <div class="container main-cont">
         <div class="row">
         <div class="col-sm-6">
-            <legend><center><h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); color: white;"><b>KOPERASI</b></h2></center></legend><br>
+            <legend><center><h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); color: white;"><b>USER PROFILE</b></h2></center></legend><br>
             <div class="row">
                 <label class="col-md-4 control-label" >Username</label>
-                <p>blabla</p>
-                <!-- <p th:text="${user.username}"></p> -->
+                <p th:text="${user.username}"></p>
             </div>
             <div class="row">
                     <label class="col-md-4 control-label" >Role</label>
-                    <!-- <p th:text="${user.role.getNama()}"></p> -->
+                    <p th:text="${user.role.getNama()}"></p>
             </div>
         </div>
         <div class="col-sm-6" th:if="${isSivitas}">
-            <legend><center><h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); color: white;"><b>SIVITAS</b></h2></center></legend><br>
+            <legend><center><h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); color: white;"><b>SIVITAS PROFILE</b></h2></center></legend><br>
             <div class="row" th:if="${isPegawai}">
                     <label class="col-md-4 control-label" >NIP</label>
                     <p th:text="${sivitas.nip}"></p>

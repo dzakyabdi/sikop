@@ -40,7 +40,6 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto my-2 my-lg-0">
                             <li class="nav-item dropdown">
-<!--                                <a class="nav-link js-scroll-trigger" th:href="@{#}" sec:authorize="isAuthenticated()">Anggota</a>-->
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isAuthenticated()">
                                     Anggota
                                 </a>
@@ -80,9 +79,6 @@
                             <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" th:href="@{/user/profile}" sec:authorize="isAuthenticated()">Profile</a>
                             </li>
-<!--                            <li class="nav-item">-->
-<!--                                <a class="nav-link js-scroll-trigger" th:href="@{/home}" sec:authorize="hasAuthority('Pengurus Koperasi')">Daftar</a>-->
-<!--                            </li>-->
                             <li class="nav-item">
                                 <a class="nav-item nav-link active" th:href="@{/logout}" sec:authorize="isAuthenticated()">
                                     <buton class="btn btn-outline-light">Logout</buton>
@@ -97,27 +93,5 @@
                     </div>
                 </div>
               </nav>
-<!-- <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#" th:text="${brand}"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-                <li><a class="nav-item nav-link active" th:href="@{/}">SI-KOPERASI <span class="sr-only">(current)</span></a></li>
-
-                <a class="nav-item nav-link active" th:href="@{/}">Anggota <span class="sr-only">(current)</span></a>
-
-                <a class="nav-item nav-link active" th:href="@{/pinjaman/view-all}">Pinjaman <span class="sr-only">(current)</span></a>
-
-
-                <a class="nav-item nav-link active" th:href="@{/}">Laporan <span class="sr-only">(current)</span></a>
-
-                <a class="nav-item nav-link active" th:href="@{/logout}">Logout</a>
-
-        </div>
-    </div>
-</nav> -->
 </body>
 </html>

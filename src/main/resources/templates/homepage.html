@@ -20,14 +20,15 @@
               <hr class="divider my-4">
             </div>
             <div class="col-lg-8 align-self-baseline">
-              <p class="text-white-75 font-weight-light mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <!--<a class="btn btn-primary btn-xl js-scroll-trigger" href="#">Login</a>-->
+              <!-- <p class="text-white-75 font-weight-light mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+              <p class="text-white-75 font-weight-light mb-5">Koperasi simpan pinjam, hadir untuk menyejahterakan dan mengayomi anggota kami</p>
+              <a class="btn btn-primary btn-xl js-scroll-trigger" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
             </div>
           </div>
         </div>
       </header>
     <!-- About Section -->
-  <section class="page-section bg-primary" id="about">
+  <!-- <section class="page-section bg-primary" id="about">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center">
@@ -38,36 +39,7 @@
           </div>
         </div>
       </div>
-    </section>
-  
-  <!-- <h2 style="text-align: left">Hello there!</h2>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card" style="object-position: center">
-        <div class="card-header">
-          Log In
-        </div>
-        <div class="card-body">
-          <div th:if="${param.error}">
-            <span style="color: red">Invalid username or password</span>
-          </div>
-          <form th:action="@{/login}" method="POST">
-            <div class="row form-group">
-              <label class="col-sm-4">Username:</label>
-              <input type="text" class="col-sm-8 form-control input-sm" name="username">
-            </div>
-            <div class="row form-group">
-              <label class="col-sm-4">Password:</label>
-              <input type="password" class="col-sm-8 form-control input-sm" name="password">
-            </div>
-            <div class="row form-group">
-              <button type="submit" class="btn btn-primary">Sign In</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> -->
+    </section> -->
 </body>
-
+<footer th:replace="fragments/fragment :: footer"></footer>
 </html>

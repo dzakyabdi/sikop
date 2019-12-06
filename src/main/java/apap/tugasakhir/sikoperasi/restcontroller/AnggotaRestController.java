@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -26,10 +27,10 @@ public class AnggotaRestController {
         try{
             return anggotaRestService.getAnggotaByIdAPI(id);
         }catch (NoSuchElementException e){
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND,"ID Anggota "+String.valueOf(id)+" Not Found"
-            );
+            Map<String, Object> statusResponse = new HashMap<String, Object>();
+            statusResponse.put("status","404");
+            statusResponse.put("response","Not Found");
+            return statusResponse;
         }
     }
-
 }
