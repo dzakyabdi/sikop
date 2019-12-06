@@ -7,10 +7,9 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
 <div class="col-sm-3">
-    <h2 class="title" th:text="'Pinjaman berhasil diubah'"></h2>
+    <h2 class="title" th:text="'Simpanan berhasil diubah'"></h2>
     <br>
-<!--    <a th:href="@{/pinjaman/view-all}">Kembali ke Halaman Utama</a>-->
-    <form th:action="@{/pinjaman/view-all/}">
+    <form th:action="@{/simpanan/view-all/}">
         <button type="submit" class="btn btn-sm btn-secondary">Halaman Utama</button>
     </form>
 </div>

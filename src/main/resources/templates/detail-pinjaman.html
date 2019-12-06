@@ -46,7 +46,9 @@
 			<div class="row">
 				<div class="col-sm-5">Status</div>
 				<div class="col-sm-6">
-					<p th:text="${status}"></p>
+					<span th:if="${pinjaman.status == 0}">Belum Disetujui</span>
+					<span th:if="${pinjaman.status == 1}">Disetujui</span>
+					<span th:if="${pinjaman.status == 0}">Sudah Dikembalikan</span>
 				</div>
 			</div>
 		</div>
