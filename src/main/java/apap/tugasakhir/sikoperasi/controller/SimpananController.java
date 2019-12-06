@@ -3,9 +3,11 @@ package apap.tugasakhir.sikoperasi.controller;
 import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.JenisSimpananModel;
 import apap.tugasakhir.sikoperasi.model.SimpananModel;
+import apap.tugasakhir.sikoperasi.model.UserModel;
 import apap.tugasakhir.sikoperasi.service.AnggotaService;
 import apap.tugasakhir.sikoperasi.service.JenisSimpananService;
 import apap.tugasakhir.sikoperasi.service.SimpananService;
+import apap.tugasakhir.sikoperasi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,10 @@ public class SimpananController {
     @Qualifier("anggotaServiceImpl")
     private AnggotaService anggotaService;
 
+    @Autowired
+    @Qualifier("userServiceImpl")
+    private UserService userService;
+
 
     @RequestMapping(value = "/simpanan/tambah", method = RequestMethod.GET)
     public String addSimpananFormPage(
@@ -38,6 +44,9 @@ public class SimpananController {
         SimpananModel simpananBaru = new SimpananModel();
         List<JenisSimpananModel> listJenisSimpanan = jenisSimpananService.getAllJenisSimpanan();
         List<AnggotaModel> listAnggota = anggotaService.getAllAnggota();
+        UserModel userNow = userService.getUser();
+        AnggotaModel anggotaNow = anggotaService.getAnggotaByUser(userNow);
+        simpananBaru.setAnggotaPenerima(anggotaNow);
         model.addAttribute("simpananBaru", simpananBaru);
         model.addAttribute("listAnggota", listAnggota);
         model.addAttribute("listJenisSimpanan", listJenisSimpanan);
