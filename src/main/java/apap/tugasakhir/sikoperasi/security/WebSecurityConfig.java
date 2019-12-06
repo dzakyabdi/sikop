@@ -17,39 +17,48 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-//                .authorizeRequests()
-//                .antMatchers("/css/**").permitAll()
-//                .antMatchers("/js/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .defaultSuccessUrl("/", true)
-//                .loginPage("/login").permitAll()
-//                .and()
-//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
-                .csrf().disable();
+                .authorizeRequests()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/home").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/pinjaman/").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/pinjaman/").hasAuthority("Anggota Koperasi")
+                .antMatchers("/pinjaman/ubah/").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/simpanan/tambah/").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/pinjaman/ajukan/").hasAuthority("Anggota Koperasi")
+                .antMatchers("/laporan-keuangan").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/laporan-keuangan").hasAuthority("Anggota Koperasi")
+                .antMatchers("/peminjaman").hasAuthority("Pengurus Koperasi")
+                .antMatchers("/api/").permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login").permitAll()
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
+                .and().csrf().disable();
     }
+
 
     @Bean
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("admin").password(encoder().encode("admin123"))
-                .roles("Pengurus Koperasi");
-    }
+//     @Autowired
+//     public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
+//         auth.inMemoryAuthentication()
+//                 .passwordEncoder(encoder())
+//                 .withUser("admin").password(encoder().encode("admin123"))
+//                 .roles("Pengurus Koperasi");
+//     }
 
-//    @Autowired
-//    private UserDetailsService userDetailsService;
-//
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
-//    }
+   @Autowired
+   private UserDetailsService userDetailsService;
+
+   @Autowired
+   public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+       auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+   }
 
 
 }
