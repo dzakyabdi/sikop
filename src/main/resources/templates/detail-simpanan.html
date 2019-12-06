@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Simpanan</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<div>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+</div>
+<div class="col-sm-3"></div>
+<div class="container-fluid col-sm-6 main-cont">
+    <h2 style="background: rgb(180,58,77); background: linear-gradient(90deg, rgba(180,58,77,1) 0%, rgba(253,29,29,0.6222864145658263) 50%, rgba(252,176,69,1) 100%); margin-top: 10px; margin-bottom: 10px; padding: 10px; color: white;">Detail Simpanan</h2>
+    <div class="row">
+        <div class="col-sm-5">Tanggal Setor</div>
+        <div class="col-sm-7">
+            <p th:text="${#dates.format(simpanan.tanggal_setor, 'yyyy-MM-dd')}"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">Jumlah</div>
+        <div class="col-sm-6">
+            <p th:text="${simpanan.jumlah}"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">Jenis Simpanan</div>
+        <div class="col-sm-6">
+            <p th:text="${simpanan.jenisSimpanan.getNama()}"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">Penyetor</div>
+        <div class="col-sm-6">
+            <p th:text="${simpanan.anggotaPenyetor.getNama()}"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">Penerima</div>
+        <div class="col-sm-6">
+            <p th:text="${simpanan.anggotaPenerima.getNama()}"></p>
+        </div>
+    </div>
+</div>
+<div class="col-sm-3"></div>
+</body>
+</html>
