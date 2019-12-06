@@ -15,14 +15,6 @@
                 <h3>Tambah Pinjaman</h3>
                 <form th:action="@{/pinjaman/ajukan}" th:object="${pinjaman}" method="POST">
                     <div class="form-row" style="margin-top: 10px; ">
-                        <label for="idAnggota" class="col-sm-5 col-form-label">Nama Anggota:</label>
-                        <div class="col-sm-7">
-                            <select name="idAnggota" class="form-control">
-                                <option th:each="anggota : ${allAnggota}" th:value="${anggota.id}" th:text="${anggota.nama}"></option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row" style="margin-top: 10px; ">
                         <label for="tanggalPengajuan" class="col-sm-5 col-form-label">Tanggal Pengajuan:</label>
                         <div class="col-sm-7">
                                 <input class="form-control" type="date" th:field="${pinjaman.tanggalPengajuan}"/>
@@ -31,7 +23,7 @@
                     <div class="form-row" style="margin-top: 10px;">
                         <label for="jumlahPinjaman" class="col-sm-5 col-form-label">Jumlah:</label>
                         <div class="col-sm-7">
-                        <input class="form-control" type="number" th:field="${pinjaman.jumlahPinjaman}" min=0 />
+                        <input class="form-control" min=0 type="number" th:field="${pinjaman.jumlahPinjaman}"/>
                         </div>
                     </div>
                     <div class="form-row" style="margin-top: 10px;">
