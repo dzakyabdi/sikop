@@ -1,14 +1,12 @@
 package apap.tugasakhir.sikoperasi.service;
 
+import apap.tugasakhir.sikoperasi.rest.FasilitasDetail;
 import apap.tugasakhir.sikoperasi.rest.PeminjamanDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
 import org.json.JSONObject;
 import reactor.core.publisher.Mono;
 
-import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public interface RuanganRestService {
     Mono<PeminjamanDetail> postPeminjamanRuang(JSONObject jsonObject);
@@ -24,4 +22,5 @@ public interface RuanganRestService {
 //                                   String uuid_user_peminjam);
     JSONObject convertToJSONObject(PeminjamanDetail peminjamanDetail, RuanganDetail ruanganDetail);
     List<RuanganDetail> getListRuangan();
+    List<FasilitasDetail> getFasilitas();
 }

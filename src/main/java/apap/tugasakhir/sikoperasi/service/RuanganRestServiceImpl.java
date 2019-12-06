@@ -1,5 +1,6 @@
 package apap.tugasakhir.sikoperasi.service;
 
+import apap.tugasakhir.sikoperasi.rest.FasilitasDetail;
 import apap.tugasakhir.sikoperasi.rest.PeminjamanDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
 import apap.tugasakhir.sikoperasi.rest.Setting;
@@ -10,9 +11,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -67,4 +65,13 @@ public class RuanganRestServiceImpl implements RuanganRestService {
         return listRuanganDetail;
     }
 
+    @Override
+    public List<FasilitasDetail> getFasilitas() {
+        List<FasilitasDetail> listFasilitasDetail = this.webClient.get()
+                                                        .uri("/koperasi/fasilitas")
+                                                        .retrieve()
+                                                        .bodyToFlux(FasilitasDetail.class)
+                                                        .collectList()
+                                                        .block();
+        return listFasilitasDetail;
 }

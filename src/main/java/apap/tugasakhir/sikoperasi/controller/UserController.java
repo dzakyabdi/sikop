@@ -50,8 +50,6 @@ public class UserController {
             anggota.setUser(user);
             anggotaService.addAnggota(anggota);
 
-
-//            userService.addUser(user);
             if(user.getRole().getNama().equals("Kepala Sekolah") || user.getRole().getNama().equals("Guru")) {
                 userRestService.postUserGuruToSiSivitas(userRestService.postGuruDetail(user, anggota));
                 return "redirect:/";

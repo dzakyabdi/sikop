@@ -87,10 +87,9 @@
                     <div class="clearfix"></div>
                     <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
                         <label>Pengurus</label>
-                        <select name="is_pengurus" class="form-control">
+                        <select class="form-control" id="sel1" name="is_pengurus" th:placeholder="${anggota.is_pengurus}" th:value="${anggota.is_pengurus}">
                             <option th:value="null">-- Pilih Pengurus --</option>
-                            <option th:value="true">Ya</option>
-                            <option th:value="false">Tidak</option>
+                            <option th:each="pengurus : ${isPengurus}" th:text="${pengurus}" th:value="${pengurus}.equals('ya') ? true:false"></option>
                         </select>
                     </div>
 
