@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface PinjamanService {
     List<PinjamanModel> getPinjamanList();
 
+    List<PinjamanModel> getPinjamanListByAnggota(AnggotaModel anggota);
+
     PinjamanModel getPinjamanByAnggota(AnggotaModel anggota);
 
     Optional<PinjamanModel> getPinjamanById(Long id);
@@ -20,7 +22,7 @@ public interface PinjamanService {
     int sumPinjaman(AnggotaModel anggota);
 
     List<PinjamanModel> getAllPinjamanByStatus(int status);
-    
+
     void addPinjaman(PinjamanModel pinjaman);
 
     PinjamanModel updatePinjaman(PinjamanModel newPinjaman);

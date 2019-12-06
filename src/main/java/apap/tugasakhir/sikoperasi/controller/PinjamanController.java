@@ -2,8 +2,10 @@ package apap.tugasakhir.sikoperasi.controller;
 
 import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.PinjamanModel;
+import apap.tugasakhir.sikoperasi.model.UserModel;
 import apap.tugasakhir.sikoperasi.service.AnggotaService;
 import apap.tugasakhir.sikoperasi.service.PinjamanService;
+import apap.tugasakhir.sikoperasi.service.UserService;
 import org.hibernate.annotations.common.reflection.XMethod;
 import org.hibernate.tool.hbm2ddl.SchemaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,10 @@ public class PinjamanController {
     
     @Autowired
     private AnggotaService anggotaService;
+
+    @Autowired
+    @Qualifier("userServiceImpl")
+    private UserService userService;
 
     @RequestMapping(value = "/pinjaman/view-all", method = RequestMethod.GET)
     public String viewPinjamanList(Model model){
@@ -83,4 +89,12 @@ public class PinjamanController {
         return "changed-pinjaman";
     }
 
+    @RequestMapping(value = "/pinjaman/view-all/anggota", method = RequestMethod.GET)
+    public String viewPinjamanAnggotaList(Model model){
+        UserModel userNow = userService.getUser();
+        AnggotaModel anggotaNow = anggotaService.getAnggotaByUser(userNow);
+        List<PinjamanModel> pinjamanList =  pinjamanService.getPinjamanListByAnggota(anggotaNow);
+        model.addAttribute("pinjamanList",pinjamanList);
+        return "view-all-pinjaman";
+    }
 }

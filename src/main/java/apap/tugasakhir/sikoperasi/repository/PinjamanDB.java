@@ -19,9 +19,10 @@ public interface PinjamanDB extends JpaRepository<PinjamanModel, Long> {
 
     List<PinjamanModel> findAllByStatus(int status);
 
+    List<PinjamanModel> findAllByAnggota(AnggotaModel anggota);
+
     List<PinjamanModel> findAllByStatusAndAnggota(int status, AnggotaModel anggota);
 
     @Query(value = "SELECT SUM(m.jumlahPinjaman) FROM PinjamanModel m WHERE m.anggota = ?1")
     Integer sumPinjaman(AnggotaModel anggota);
-
 }

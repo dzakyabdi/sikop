@@ -98,4 +98,9 @@ public class PinjamanServiceImpl implements PinjamanService{
         pinjamanDb.save(targetPinjaman);
         return targetPinjaman;
     }
+
+    @Override
+    public List<PinjamanModel> getPinjamanListByAnggota(AnggotaModel anggota) {
+        return pinjamanDb.findAllByAnggota(anggota);
+    }
 }

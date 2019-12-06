@@ -1,7 +1,6 @@
 package apap.tugasakhir.sikoperasi.service;
 
 import apap.tugasakhir.sikoperasi.rest.FasilitasDetail;
-import apap.tugasakhir.sikoperasi.rest.ListFasilitasDetail;
 import apap.tugasakhir.sikoperasi.rest.PeminjamanDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganNamaDetail;
