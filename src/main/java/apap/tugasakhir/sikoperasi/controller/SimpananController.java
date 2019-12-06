@@ -3,16 +3,19 @@ package apap.tugasakhir.sikoperasi.controller;
 import apap.tugasakhir.sikoperasi.model.AnggotaModel;
 import apap.tugasakhir.sikoperasi.model.JenisSimpananModel;
 import apap.tugasakhir.sikoperasi.model.SimpananModel;
+import apap.tugasakhir.sikoperasi.model.UserModel;
 import apap.tugasakhir.sikoperasi.service.AnggotaService;
 import apap.tugasakhir.sikoperasi.service.JenisSimpananService;
 import apap.tugasakhir.sikoperasi.service.SimpananService;
+import apap.tugasakhir.sikoperasi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,20 +32,10 @@ public class SimpananController {
     @Qualifier("anggotaServiceImpl")
     private AnggotaService anggotaService;
 
-    @RequestMapping(value = "/simpanan/view-all", method = RequestMethod.GET)
-    public String viewSimpananList(Model model){
-        List<SimpananModel> simpananList =  simpananService.getAllSimpanan();
-        model.addAttribute("simpananList",simpananList);
-        return "view-all-simpanan";
-    }
+    @Autowired
+    @Qualifier("userServiceImpl")
+    private UserService userService;
 
-    @RequestMapping("simpanan/view")
-    public String viewById(
-            @RequestParam("id") Long id, Model model) {
-        SimpananModel  existingSimpanan = simpananService.getSimpananById(id);
-        model.addAttribute("simpanan", existingSimpanan);
-        return "detail-simpanan";
-    }
 
     @RequestMapping(value = "/simpanan/tambah", method = RequestMethod.GET)
     public String addSimpananFormPage(
@@ -51,6 +44,12 @@ public class SimpananController {
         SimpananModel simpananBaru = new SimpananModel();
         List<JenisSimpananModel> listJenisSimpanan = jenisSimpananService.getAllJenisSimpanan();
         List<AnggotaModel> listAnggota = anggotaService.getAllAnggota();
+        UserModel userNow = userService.getUser();
+        AnggotaModel anggotaNow = anggotaService.getAnggotaByUser(userNow);
+//        System.out.println("Heloooooooo");
+//        simpananBaru.setAnggotaPenerima(anggotaNow);
+//        System.out.println(anggotaNow.getNama());
+//        System.out.println(anggotaNow.getId());
         model.addAttribute("simpananBaru", simpananBaru);
         model.addAttribute("listAnggota", listAnggota);
         model.addAttribute("listJenisSimpanan", listJenisSimpanan);
@@ -62,28 +61,12 @@ public class SimpananController {
             @ModelAttribute SimpananModel simpananBaru,
             Model model
     ){
+        UserModel userNow = userService.getUser();
+        AnggotaModel anggotaNow = anggotaService.getAnggotaByUser(userNow);
+        simpananBaru.setAnggotaPenerima(anggotaNow);
         simpananService.addSimpanan(simpananBaru);
         model.addAttribute("simpananBaru", simpananBaru);
         return "action-success";
-    }
-
-    @RequestMapping(value = "simpanan/ubah/{id}", method = RequestMethod.GET)
-    public String changeSimpananFormPage(@PathVariable Long id, Model model) {
-        SimpananModel existingSimpanan = simpananService.getSimpananById(id);
-        List<JenisSimpananModel> listJenisSimpanan = jenisSimpananService.getAllJenisSimpanan();
-        List<AnggotaModel> listAnggota = anggotaService.getAllAnggota();
-
-        model.addAttribute("simpanan", existingSimpanan);
-        model.addAttribute("jenisSimpananList", listJenisSimpanan);
-        model.addAttribute("listAnggota", listAnggota);
-        return "form-change-simpanan";
-    }
-
-    @RequestMapping(value = "simpanan/ubah/{id}", method = RequestMethod.POST)
-    public String changeSimpananSubmit(@PathVariable Long id, @ModelAttribute SimpananModel simpanan, Model model) {
-        SimpananModel newSimpanan = simpananService.updateSimpanan(simpanan);
-        model.addAttribute("simpanan", newSimpanan);
-        return "changed-simpanan";
     }
 
 }

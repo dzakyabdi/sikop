@@ -25,6 +25,7 @@ public class RuanganController {
     @RequestMapping(value = "/peminjaman", method = RequestMethod.GET)
     public String addPeminjamanRuangForm(Model model) {
         model.addAttribute("listRuangan", ruanganRestService.getListRuangan());
+        model.addAttribute("listRuanganNama", ruanganRestService.getListRuanganWithNama());
         return "form-add-peminjaman-ruang";
     }
 
@@ -41,9 +42,5 @@ public class RuanganController {
 
         return "action-success";
     }
-
-
-
-
 
 }

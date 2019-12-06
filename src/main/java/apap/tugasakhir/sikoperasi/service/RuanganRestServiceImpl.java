@@ -2,6 +2,7 @@ package apap.tugasakhir.sikoperasi.service;
 
 import apap.tugasakhir.sikoperasi.rest.PeminjamanDetail;
 import apap.tugasakhir.sikoperasi.rest.RuanganDetail;
+import apap.tugasakhir.sikoperasi.rest.RuanganNamaDetail;
 import apap.tugasakhir.sikoperasi.rest.Setting;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
@@ -67,4 +68,14 @@ public class RuanganRestServiceImpl implements RuanganRestService {
         return listRuanganDetail;
     }
 
+    @Override
+    public List<RuanganNamaDetail> getListRuanganWithNama() {
+        List<RuanganNamaDetail> listRuanganDetail = this.webClient.get()
+                .uri("/ruangan/")
+                .retrieve()
+                .bodyToFlux(RuanganNamaDetail.class)
+                .collectList()
+                .block();
+        return listRuanganDetail;
+    }
 }
