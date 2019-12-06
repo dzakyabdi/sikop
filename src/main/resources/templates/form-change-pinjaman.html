@@ -18,7 +18,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Jumlah Pengembalian</label>
             <div class="col-sm-10">
-                <input type="number" th:value="${pinjaman.jumlahPengembalian}" name="jumlahPengembalian" class="form-control">
+                <input type="number" th:value="${pinjaman.jumlahPengembalian}" name="jumlahPengembalian" class="form-control" min=0>
             </div>
         </div>
         <br>
