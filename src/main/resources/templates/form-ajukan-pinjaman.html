@@ -31,7 +31,7 @@
                     <div class="form-row" style="margin-top: 10px;">
                         <label for="jumlahPinjaman" class="col-sm-5 col-form-label">Jumlah:</label>
                         <div class="col-sm-7">
-                        <input class="form-control" type="number" th:field="${pinjaman.jumlahPinjaman}"/>
+                        <input class="form-control" min=0 type="number" th:field="${pinjaman.jumlahPinjaman}"/>
                         </div>
                     </div>
                     <div class="form-row" style="margin-top: 10px;">
